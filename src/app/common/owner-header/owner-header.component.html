@@ -1,0 +1,46 @@
+<div class="topbar d-flex">
+   <h3>{{ titleService.pageTitle$ | async }}</h3>
+   <!-- <input type="text" class="form-control" placeholder="Search here..." /> -->
+   <!-- <div class="input-group">
+     <span class="input-group-text border-0" id="search-addon">
+       <i class="fas fa-search"></i>
+     </span>
+     <input type="search" class="form-control" placeholder="Search Here..." aria-label="Search"
+       aria-describedby="search-addon" />
+   </div> -->
+   <div class="tm-dashboard-topbar-right" *ngIf="commonService.userInfo$ | async as userInfo">
+     <div class="tm-dashboard-topbar-notification" >
+      @if(userInfo?.role=='O')
+      {
+        <a routerLink="/parking-owner/notification" ><i class="fa-regular fa-bell"></i> <span>{{total_unread_noti}}</span></a>
+      }
+      @else
+      {
+        <a routerLink="/customer/notification" ><i class="fa-regular fa-bell"></i> <span>{{total_unread_noti}}</span></a>
+      }
+     </div>
+     <div class="profile" >
+       <img src="{{userInfo?.profile_photo}}" alt="User" class="img-fluid">
+       <div class="tm-booking-details-sec-list tm-dashboard-topbar-right-dropdown">
+
+         <div class="dropdown" ngbDropdown >
+           <button class="btn dropdown-toggle" type="button" ngbDropdownToggle id="dropdownMenuButton1">
+             <h5>{{userInfo?.name}}</h5>
+             <span>
+              @if(userInfo?.role=='O'){
+                Admin(Owner)
+              }
+              @else{
+                Customer
+              }
+             </span>
+
+           </button>
+           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="" ngbDropdownMenu >
+             <li><a class="dropdown-item" href="javascript:void(0)" (click)="openLogoutAlert()">log out</a></li>
+           </ul>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>

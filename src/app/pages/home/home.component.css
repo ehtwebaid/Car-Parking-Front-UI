@@ -1,0 +1,4 @@
+::ng-deep .angular-datetime-picker {
+  width: 800px !important; /* Increase calendar width */
+  max-width: 8cap !important;
+}

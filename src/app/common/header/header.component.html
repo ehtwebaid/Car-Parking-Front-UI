@@ -1,0 +1,62 @@
+<header class="tm-header page-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div>
+          <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid p-0">
+              <a class="navbar-brand tm-header-menu" [routerLink]="'/'"><img src="assets/img/logo2.svg" alt=""
+                  class="img-fluid"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+              </button>
+              <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0 tm-header-menu">
+                  <li class="nav-item">
+                    <a class="nav-link" [routerLink]="'/find-parking'" [routerLinkActive]="['activenav']">Find
+                      Parking</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0)" [routerLinkActive]="['activenav']">EV</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0)" [routerLinkActive]="['activenav']">About Us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0)" [routerLinkActive]="['activenav']">Help</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0)"  [routerLink]="'/home'" fragment="contactUS">Contact Us</a>
+                  </li>
+                </ul>
+                <div class="d-flex tm-header-btn">
+                  @if(!token)
+                  {
+                  <a href="javascript:void(0)" class="tm-btn2" [routerLink]="'/share'">Share Your Spot</a>
+                  <a [routerLink]="['/login']" class="tm-btn">Sign Up/Log In</a>
+                  }
+                  @else {
+                  <ng-container *ngIf="commonService.userInfo$ | async as userInfo">
+                    @if(userInfo.role=='O')
+                    {
+                    <a class="tm-btn2" [routerLink]="'/parking-owner/dashboard'">Dashboard</a>
+                    }
+                    @else {
+                    <a class="tm-btn2" [routerLink]="'/customer/dashboard'">Dashboard</a>
+
+                    }
+                  </ng-container>
+                  <a href="javascript:void(0)" (click)="confirmLogout();" class="tm-btn">Signout</a>
+                  }
+
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

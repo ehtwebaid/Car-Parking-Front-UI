@@ -1,0 +1,97 @@
+<table class="table align-middle table-striped table-borderless">
+  <tbody *ngIf="bookingDetail$ | async as booking">
+    <tr>
+      <td>ID</td>
+      <td>#{{booking?.code}}</td>
+    </tr>
+    <tr>
+      <td>Customer</td>
+      <td>{{booking?.customer?.name}}</td>
+    </tr>
+    <tr>
+      <td>Address</td>
+      <td>{{booking?.parking_slot?.parking_space?.address}}</td>
+    </tr>
+    <tr>
+      <td>Title</td>
+      <td>{{booking?.parking_slot?.parking_space?.title}}</td>
+    </tr>
+    <tr>
+      <td>Vehicle Number</td>
+      <td>{{booking?.billing?.vehicle_number}}</td>
+    </tr>
+    <tr>
+      <td>Booking Type</td>
+      <td>{{booking?.booking_type | titlecase}}</td>
+    </tr>
+    @if(booking?.booking_type=='hourly')
+    {
+    <tr>
+      <td>In Time</td>
+      <td>{{booking?.booking_start | date:'dd MMM, hh:mm a'}}</td>
+    </tr>
+    <tr>
+      <td>Exit Time</td>
+      <td>{{booking?.booking_end | date:'dd MMM, hh:mm a'}}</td>
+    </tr>
+    <tr>
+      <td>Duration</td>
+      <td>{{booking?.durations}}</td>
+    </tr>
+    }
+    @else {
+    <tr>
+      <td>In Time</td>
+      <td>{{booking?.booking_start | date:'EEEE d MMMM yyyy'}}</td>
+    </tr>
+    <tr>
+      <td>Exit Time</td>
+      <td>{{booking?.booking_end | date:'EEEE d MMMM yyyy'}}</td>
+    </tr>
+    <tr>
+      <td>Duration</td>
+      <td>30 Days</td>
+    </tr>
+    <tr>
+      <td>Billing Frequency</td>
+      <td>Monthly</td>
+    </tr>
+    <tr>
+      <td>Parking Access hours</td>
+      <td>{{booking?.billing?.access_hours}} a day</td>
+    </tr>
+    <tr>
+      <td>First Payment</td>
+      <td>{{booking?.created_at | date:'EEEE d MMMM yyyy'}}</td>
+    </tr>
+    <tr>
+      <td>Subsequent Payment Date</td>
+      <td>{{booking?.next_payment_date | ordinal }}</td>
+    </tr>
+    }
+
+    <tr>
+      <td>Vehicle Type</td>
+      <td>{{booking?.billing?.carType?.name}}</td>
+    </tr>
+    <tr>
+      <td>Parking Slots</td>
+      <td>{{booking?.parking_slot?.slot_code}}</td>
+    </tr>
+    <tr>
+      <td>Gross Payment</td>
+      <td>{{booking?.billing?.net_parking_fees | currency}}</td>
+    </tr>
+    <tr>
+      <td>Ev Charge Payment</td>
+      <td>
+        {{booking?.billing?.ev_charing_fees}}X{{booking?.billing?.ev_charing_duration}}={{booking?.billing?.net_ev_chagin_fees
+        | currency}}</td>
+    </tr>
+    <tr>
+      <td>Net Payment</td>
+      <td>{{booking?.billing?.net_fees | currency}}</td>
+    </tr>
+  </tbody>
+
+</table>

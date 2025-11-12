@@ -1,0 +1,51 @@
+<ngx-stripe-elements>
+  <div class="mb-3">
+    <label class="form-label">Card Number</label>
+    <div class="stripe-box d-flex align-items-center">
+      <ngx-stripe-card-number
+        [options]="cardNumberOptions"
+        (change)="onCardChange($event)"
+        class="flex-grow-1">
+      </ngx-stripe-card-number>
+
+      <!-- Card Brand Icon -->
+      <img *ngIf="cardBrand;else cc_logo"
+           [src]="'assets/img/' + cardBrand + '.svg'"
+           alt="brand"
+           class="ms-2 card-icon"/>
+           <ng-template #cc_logo> <img
+           src="assets/img/cc_logo.svg"
+           alt="brand"
+           class="ms-2 card-icon"/></ng-template>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label class="form-label">Expiration date</label>
+      <div class="stripe-box d-flex align-items-center">
+        <ngx-stripe-card-expiry [options]="cardExpiryOptions"></ngx-stripe-card-expiry>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <label class="form-label">Security code</label>
+      <div class="stripe-box d-flex align-items-center">
+        <ngx-stripe-card-cvc [options]="cardCvcOptions" class="flex-grow-1"></ngx-stripe-card-cvc>
+
+        <!-- CVC Icon -->
+        <img src="assets/img/card-cvv-icon.svg" alt="cvc" class="card-icon"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-grid mt-3">
+    <button type="button" class="btn btn-primary" (click)="createToken()" [disabled]="btnDisabled" #paymentBtn>
+    <span class="indicator-label">Pay Now</span>
+    <span class="indicator-progress">Please wait...
+        <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+    </span>
+
+    </button>
+  </div>
+</ngx-stripe-elements>

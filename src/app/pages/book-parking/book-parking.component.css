@@ -1,0 +1,44 @@
+.accordion-button:empty,
+button.ng-star-inserted:empty {
+  display: none !important;
+}
+button.disabled-slot {
+  background-color: #f5f5f5 !important;   /* light gray */
+  color: #999 !important;                 /* dim text */
+  border: 1px dashed #ccc !important;     /* dashed border */
+  cursor: not-allowed !important;         /* no-click cursor */
+  opacity: 0.7;                /* slightly faded */
+}
+
+button.disabled-slot:hover {
+  background-color: #f5f5f5;   /* no hover effect */
+}
+.scrollable-div{
+  max-height: 300px; /* or any height you want */
+  overflow-y: auto;  /* enables vertical scroll */
+  overflow-x: hidden; /* hide horizontal scroll */
+
+}
+.fc-scroller {
+overflow: inherit !important;
+}
+.tm-btn {
+  align-self: flex-start !important;
+  margin-top: 2px !important; /* optional fine-tuning */
+}
+.fc-daygrid-day {
+  cursor: pointer; /* Changes the cursor to a hand pointer */
+}
+
+/* Optional: For specific states, like when a day is selectable */
+.fc-daygrid-day.fc-day-selectable {
+  cursor: crosshair; /* Changes the cursor to a crosshair when selectable */
+}
+
+/* Optional: To indicate a disabled or non-interactive day */
+.fc-daygrid-day.fc-day-disabled {
+  cursor: not-allowed; /* Changes the cursor to a 'not allowed' symbol */
+}
+.fc-day-today {
+  background-color: inherit !important;
+}

@@ -1,0 +1,138 @@
+<div class="tm-content-area">
+  <!-- Revenue and Payment Cards -->
+  <div class="tm-content-area-top-panel-main">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <div
+          class="tm-content-area-top-panel"
+          *ngIf="payment$ | async as payment"
+        >
+          <h4>Revenue</h4>
+          <table class="table mb-0">
+            <tbody>
+              <tr>
+                <td>Today Income</td>
+                <td class="text-end">
+                  {{ payment?.today_income?.total_income || 0 | currency }}
+                </td>
+              </tr>
+              <tr>
+                <td>This Month Income</td>
+                <td class="text-end">
+                  {{
+                    payment?.this_month_income?.montly_income || 0 | currency
+                  }}
+                </td>
+              </tr>
+              <tr>
+                <td>This Year Income</td>
+                <td class="text-end">
+                  {{ payment?.this_year_income?.yearly_income || 0 | currency }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="tm-content-area-top-panel">
+          <h4>Latest Payment Received</h4>
+          <ul>
+            <li>
+              <span>Amount Received:</span>
+              <h3>$30</h3>
+            </li>
+            <li>
+              <span>Received Through:</span>
+              <h3>Bank Transfer</h3>
+            </li>
+            <li>
+              <span>Payment ID:</span>
+              <h3>#BK10245</h3>
+            </li>
+          </ul>
+          <div class="tm-content-area-top-panel-btn">
+            <button class="btn btn-blue tm-btn">
+              Check Your Transaction History
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tm-content-area-panel-table">
+    <!-- Table Title & Button -->
+    <div
+      class="d-flex justify-content-between align-items-center tm-content-area-panel-table-title"
+    >
+      <h4>Parking Revenue</h4>
+      <button
+        class="btn btn-primary tm-btn"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        Create Parking Entry <i class="fas fa-plus"></i>
+      </button>
+    </div>
+    <app-filter-data (changeFilter)="changeFilter($event)"></app-filter-data>
+    <!-- Table -->
+    <div class="table-responsive tm-parking-revenue-panel-table">
+      <table class="table align-middle table-striped table-borderless">
+        <thead class="">
+          <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Duration</th>
+            <th>Vehicle No</th>
+            <th>Vehicle Type</th>
+            <th>Slots Number</th>
+            <th>EV Charge</th>
+            <th>Gross Payment</th>
+            <th>Net Payment</th>
+          </tr>
+        </thead>
+        <tbody>
+          @if (revenues.length>0) { @for (item of revenues; track $index) {
+          <tr>
+            <td>{{ item?.booking_start | date : "MM/dd/yyyy" }}</td>
+            <td>{{ item?.booking_start | date : "hh:mm a" }}</td>
+            <td>{{ item?.durations }}</td>
+            <td>{{ item?.billing?.vehicle_number }}</td>
+            <td>{{ item?.billing?.carType?.name }}</td>
+            <td>{{ item?.parking_slot?.slot_code }}</td>
+            <td>{{ item?.billing?.net_ev_chagin_fees > 0 ? "Yes" : "No" }}</td>
+            <td>{{ item?.billing?.net_parking_fees | currency }}</td>
+            <td>{{ item?.billing?.net_fees | currency }}</td>
+          </tr>
+          } } @else {
+          <tr>
+            <td colspan="8" class="text-center">No payment(s) Found</td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    <!-- Pagination -->
+    <div class="tm-parking-revenue-panel-table-pagination">
+      <nav>
+        @if (revenues.length>0) {
+        <ngb-pagination
+          class="pagination justify-content-center"
+          [collectionSize]="collectionSize"
+          [(page)]="page"
+          [pageSize]="per_page"
+          [maxSize]="5"
+          [rotate]="true"
+          [ellipses]="false"
+          [boundaryLinks]="true"
+          (pageChange)="onPageChange($event)"
+          firstText="⏮"
+          previousText="◀"
+          nextText="▶"
+          lastText="⏭"
+        />
+        }
+      </nav>
+    </div>
+  </div>
+</div>

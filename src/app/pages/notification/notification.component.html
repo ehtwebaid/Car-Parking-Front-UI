@@ -1,0 +1,44 @@
+<div class="tm-content-area">
+  <div class="tm-notification-page-main">
+    <div class="tm-notification-page-panel">
+      <!-- Today -->
+      @if(notifications)
+      {
+      @for (date of notificationDates; track date)
+      {
+      <div class="tm-assign-parking-panel-form-box-title">
+        <h4>{{date | customDateStr}}</h4>
+      </div>
+      <!-- John Doe -->
+      @for (item of notifications[date]; track item.id) {
+      <div class="request-card d-flex align-items-start" #notificationCard >
+        <img src="assets/img/notification-user-img1.jpg" class="profile-img me-3">
+        <div class="flex-grow-1">
+          <h5>{{item?.sender?.name}}</h5>
+          <div>{{item?.message}}</div>
+          <!-- <div class="mt-2">
+                      <button class="btn btn-sm assign-btn me-2">Assign Parking</button>
+                      <button class="btn btn-sm deny-btn">Deny</button>
+                    </div> -->
+        </div>
+        <div class="text-end ms-3 time-text">
+          <i class="fa-regular fa-clock"></i>
+          {{item?.created_at |  date:'d MMMM y'}} at {{item?.created_at |  date:'hh:mm a'}}
+        </div>
+      </div>
+      }
+    }
+  }
+
+    </div>
+    <div class="tm-parking-revenue-panel-table-pagination">
+      <nav>
+        @if (notifications) {
+        <ngb-pagination class="pagination justify-content-center" [collectionSize]="collectionSize" [(page)]="page"
+          [pageSize]="per_page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"
+          (pageChange)="onPageChange($event)" firstText="⏮" previousText="◀" nextText="▶" lastText="⏭" />
+        }
+      </nav>
+    </div>
+  </div>
+</div>

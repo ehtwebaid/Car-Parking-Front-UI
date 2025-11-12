@@ -1,0 +1,127 @@
+<section class="tm-log-in-page">
+  <div class="container-fluid p-0">
+    <div class="row align-items-center m-0">
+      <div class="col-md-6 p-0">
+        <div class="tm-log-in-page-img">
+          <img src="assets/img/log-in-img.jpg" alt="" class="img-fluid" />
+        </div>
+      </div>
+      <div class="col-md-6 p-0">
+        <div class="tm-log-in-page-text">
+          <div class="tm-log-in-page-text-main">
+            <div class="tm-log-in-page-text-title">
+              <h3>Create an account</h3>
+              <p>
+                Already have an account? <a [routerLink]="'/login'">Log in</a>
+              </p>
+            </div>
+            <div class="tm-log-in-page-text-list">
+              <ul>
+                <li>
+                  <a href="javascript:void(0)"><img src="assets/img/social-media-icon2.svg" alt=""
+                      class="img-fluid" /></a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)"><img src="assets/img/social-media-icon3.svg" alt=""
+                      class="img-fluid" /></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="tm-log-in-page-form">
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+              <div class="mb-2">
+                <label class="form-label">Enter your name</label>
+                <input type="text" class="form-control" formControlName="name" [class.is-invalid]="
+                    submitting && signupForm.get('name')?.invalid
+                  " />
+                <div class="invalid-feedback" *ngIf="signupForm.get('name')?.hasError('required')">
+                  Name is required.
+                </div>
+              </div>
+              <div class="mb-2">
+                <label class="form-label">Enter your email</label>
+                <input type="text" class="form-control" formControlName="email" [class.is-invalid]="
+                    submitting && signupForm.get('email')?.invalid
+                  " />
+                <div class="invalid-feedback" *ngIf="signupForm.get('email')?.hasError('required')">
+                  Email is required.
+                </div>
+                <div class="invalid-feedback" *ngIf="signupForm.get('email')?.hasError('email')">
+                  Enter a valid email address.
+                </div>
+              </div>
+              <div class="mb-2">
+                <label class="form-label">Enter your number</label>
+                <input type="text" class="form-control" formControlName="phone_no" appNumeric maxlength="10" [class.is-invalid]="
+                    submitting && signupForm.get('phone_no')?.invalid
+                  " />
+                <div class="invalid-feedback" *ngIf="signupForm.get('phone_no')?.hasError('required')">
+                  Phone is required.
+                </div>
+                <div class="invalid-feedback" *ngIf="signupForm.get('phone_no')?.hasError('minlength')">
+                  Phone number must be at least 10 digits.
+                </div>
+              </div>
+              <div class="mb-2">
+                <div class="tm-password-hide">
+                  <label class="form-label">Enter your password</label>
+                  <span><a href="javascript:void(0)" (click)="changeInputType()"><i class="bi" [ngClass]="isPasswordHidden() ? 'bi-eye' : 'bi-eye-slash'"></i></a>
+                    {{isPasswordHidden()?'Show':'Hide'}}</span>
+                </div>
+                <input type="password" #pwd class="form-control" formControlName="password" [class.is-invalid]="
+                    submitting && signupForm.get('password')?.invalid
+                  " />
+                <div class="invalid-feedback" *ngIf="signupForm.get('password')?.hasError('required')">
+                  Password is required.
+                </div>
+                <div class="invalid-feedback" *ngIf="signupForm.get('password')?.hasError('minlength')">
+                  Password must be at least
+                  {{ signupForm.get('password')?.errors?.['minlength']?.requiredLength }}
+                  characters.
+                </div>
+              </div>
+              <div class="mb-2">
+                <label class="form-label d-block">Sign up as</label>
+
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" formControlName="role" id="parkingOwner"
+                    value="O" />
+                  <label class="form-check-label" for="parkingOwner">
+                    Parking Owner
+                  </label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" formControlName="role" id="user" value="U" />
+                  <label class="form-check-label" for="user">
+                    User
+                  </label>
+                </div>
+
+
+              </div>
+
+              <div class="mb-2 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1"  (click)="SetTerm($event)"/>
+                <label class="form-check-label" for="exampleCheck1">I agree to the
+                  <a href="javascript:void(0)">Terms of Service</a> and
+                  <a href="javascript:void(0)">Privacy Policy</a></label>
+                <div class="text-danger" *ngIf="!signupForm.value.agree && submitting">
+                  You are required to accept the Terms of Service to create an
+                  account
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary tm-btn mt-3">
+                Create an Account
+              </button>
+              <div class="text-center tm-forget-password">
+                <a href="javascript:void(0)">Forget password</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

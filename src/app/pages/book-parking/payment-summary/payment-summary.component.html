@@ -1,0 +1,54 @@
+<div class="tm-booking-details-sec-title">
+  <h2>Payment Summary</h2>
+</div>
+<div class="tm-booking-details-sec-list">
+  <ul>
+    <li>
+      <span>Subtotal</span>
+      @if(bookingType=='hourly')
+      {
+        <h5>{{ (per_hour_price()*duration()) | currency }}</h5>
+      }
+      @else {
+         <h5>{{ monthly_price() | currency }}</h5>
+      }
+
+    </li>
+    <li>
+      <span>Services Fee</span>
+      <h5>{{service_fee() | currency}}</h5>
+    </li>
+    <li>
+      <span>EV Charging</span>
+      <h5>{{(per_hour_ev_price()*ev_charge_duration()) | currency}}</h5>
+    </li>
+  </ul>
+</div>
+<div class="tm-payment-summary-order-total">
+  <div class="tm-payment-summary-order-total-text">
+    <h4>Order Total</h4>
+    <span>{{total() | currency}}</span>
+  </div>
+</div>
+<div class="tm-payment-summary-btn">
+  <a href="javascript:void(0)" class="tm-btn" (click)="openPaymentModal()">Pay Now
+    to Book</a>
+</div>
+<ng-template #payment_modal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Pyment</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <app-stripe-payment [clientSecret]="clientSecret" (generateStripeToken)="submitBookingData($event)"></app-stripe-payment>
+  </div>
+</ng-template>
+<ng-template #login_modal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Sign IN</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <app-login [redirectDashboard]="false" (loginSuccess)="openPaymentModal()"></app-login>
+  </div>
+</ng-template>

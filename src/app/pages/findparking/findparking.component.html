@@ -1,0 +1,144 @@
+<section class="tm-location-card-page tm-custom-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <app-search-filter
+          (onSearchFilter)="changeFilter($event)"
+          [is_ev_charing]="serachOptions.is_ev_charing"
+        >
+        </app-search-filter>
+      </div>
+      <div class="col-md-8">
+        <div class="tm-location-card-page-right">
+          <div class="tm-banner-sec-left-form mb-4">
+            <div
+              class="mb-3 form-icon-group d-flex align-items-center gap-3 flex-wrap"
+            >
+              <!-- Existing ng-select -->
+              <div class="flex-grow-1">
+                <i class="fas fa-map-marker-alt"></i>
+                <ng-select
+                  [items]="states$ | async"
+                  bindLabel="name"
+                  bindValue="id"
+                  [(ngModel)]="state_id"
+                  [placeholder]="'Choose your State'"
+                  [searchable]="true"
+                  [addTag]="false"
+                  class="w-100"
+                  (change)="setState($event)"
+                >
+                </ng-select>
+              </div>
+
+              <!-- City + ZIP shown after selection -->
+
+            </div>
+          </div>
+          <div class="row align-items-center gy-4">
+
+              <ng-container *ngIf="parkings.length > 0; else noRecords">
+                <cdk-virtual-scroll-viewport
+                  itemSize="100"
+                  class="viewport"
+                  #viewport
+                  (scrolledIndexChange)="scrolledIndexChange($event)"
+                >
+                  <div class="row m-0">
+                    <div
+                      class="col-md-6 p-2"
+                      *cdkVirtualFor="let item of parkings; let i = index"
+                    >
+                      <div class="tm-location-card-page-booking-panel">
+                        <div class="tm-location-card-page-booking-panel-img">
+                          <a href="javascript:void(0)">
+                            <img [src]="item?.photo" alt="" class="img-fluid" />
+                          </a>
+                        </div>
+                        <div class="tm-location-card-page-booking-panel-text">
+                          <div
+                            class="tm-location-card-page-booking-panel-text-top"
+                          >
+                            <div
+                              class="tm-location-card-page-booking-panel-text-title"
+                            >
+                              <h6>{{ item?.title }}</h6>
+                              <span>{{ item?.totalSlot }} Space Available</span>
+                            </div>
+                            <div
+                              class="tm-location-card-page-booking-panel-text-list"
+                            >
+                              <ul>
+                                <li>
+                                  Hourly/Daily:
+                                  <span>${{ item?.per_hour_price }}</span>
+                                </li>
+                                <li>
+                                  Monthly:
+                                  <span>${{ item?.per_month_price }}</span>
+                                </li>
+                              </ul>
+                            </div>
+                            <div
+                              class="tm-location-card-page-booking-panel-text-charging"
+                              *ngIf="item?.is_ev_charing"
+                            >
+                              <span>
+                                <img
+                                  src="assets/img/card-page-booking-list-icon.svg"
+                                  alt=""
+                                  class="img-fluid"
+                                />
+                                EV Charging Available
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="tm-location-card-page-booking-panel-text-btn mt-2"
+                          >
+                            <a
+                              [routerLink]="['/parking/view/' + item?.slug]"
+                              class="tm-btn"
+                              >Book Now</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </cdk-virtual-scroll-viewport>
+              </ng-container>
+
+
+            <ng-template #noRecords>
+              <div
+                *ngIf="!loading"
+                class="d-flex flex-column align-items-center justify-content-center p-4 text-center border rounded bg-light shadow-sm"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="36"
+                  height="36"
+                  fill="#adb5bd"
+                  class="mb-2"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M.54 3.87.5 3A1.5 1.5 0 0 1 2 .5h3.672a1.5 1.5 0 0 1 1.06.44l.828.828H14a1.5 1.5 0 0 1 1.5 1.5v7.879a1.5 1.5 0 0 1-.44 1.06l-2.621 2.621a1.5 1.5 0 0 1-1.06.44H2A1.5 1.5 0 0 1 .5 13.5v-9a1.5 1.5 0 0 1 .04-.63z"
+                  />
+                  <path
+                    d="M5.354 8.146a.5.5 0 1 0-.708.708L6.293 10l-1.647 1.646a.5.5 0 0 0 .708.708L7 10.707l1.646 1.647a.5.5 0 0 0 .708-.708L7.707 10l1.647-1.646a.5.5 0 0 0-.708-.708L7 9.293 5.354 8.146z"
+                  />
+                </svg>
+                <h6 class="text-muted mb-1">No Records Found</h6>
+                <small class="text-secondary"
+                  >Please try again later or adjust your filters.</small
+                >
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,77 @@
+<div class="tm-booking-details-sec-title">
+  <h2>Booking Details</h2>
+</div>
+<div class="tm-booking-details-sec-list">
+  <ul>
+    @if(bookingType=='hourly')
+    {
+    <li>
+      <span><img src="assets/img/booking-details-list-icon1.svg" alt="" class="img-fluid" />
+        Arriving on</span>
+      <h5>{{bookingData?.start_date | date:'d MMMM y'}} - {{bookingData?.start_date | date:'hh:mm a'}}</h5>
+    </li>
+    <li>
+      <span><img src="assets/img/booking-details-list-icon2.svg" alt="" class="img-fluid" />
+        Leaving on</span>
+      <h5>{{bookingData?.end_date | date:'d MMMM y'}} - {{bookingData?.end_date | date:'hh:mm a'}}</h5>
+    </li>
+    <li>
+      <span><img src="assets/img/booking-details-list-icon3.svg" alt="" class="img-fluid" />
+        Total duration</span>
+      <h5>{{this.bookingData?.durations | number}} hour(s)</h5>
+    </li>
+    }@else {
+    <li>
+      <span><img src="assets/img/booking-details-list-icon4.svg" alt="" class="img-fluid"> Starting date</span>
+      <h5>{{bookingData?.start_date | date:'EEEE d MMMM yyyy'}}</h5>
+    </li>
+    <li>
+      <span><img src="assets/img/booking-details-list-icon5.svg" alt="" class="img-fluid"> Billing frequency</span>
+      <h5>Monthly</h5>
+    </li>
+    <li>
+      <span><img src="assets/img/booking-details-list-icon3.svg" alt="" class="img-fluid"> Parking Access hours</span>
+      <h5>{{bookingData?.access_hours}} a day</h5>
+    </li>
+    <li>
+      <span><img src="assets/img/booking-details-list-icon6.svg" alt="" class="img-fluid"> First payment</span>
+      <h5>Today</h5>
+    </li>
+    <li>
+      <span><img src="assets/img/booking-details-list-icon7.svg" alt="" class="img-fluid"> Subsequent payment date</span>
+      <h5>{{bookingData?.renewalDate | ordinal}} of each month</h5>
+    </li>
+    }
+
+    <li>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="checkChecked" disabled
+          [checked]="bookingData?.is_ev_charing" />
+        <label class="form-check-label" for="checkChecked">
+          Add EV Charging Facility
+        </label>
+      </div>
+      <h5>${{bookingData?.slot?.ev_charging_price ?? 0}}/hours</h5>
+    </li>
+    <li>
+      <span>Add EV Charging Duration</span>
+      <div class="dropdown">
+        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          {{bookingData?.ev_charing_duration?bookingData?.ev_charing_duration+'h':'N/A'}}
+        </button>
+        <!-- <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li>
+            <a class="dropdown-item" href="#">2 h</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">3 h</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">4 h</a>
+          </li>
+        </ul> -->
+      </div>
+    </li>
+  </ul>
+</div>

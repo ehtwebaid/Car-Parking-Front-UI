@@ -1,0 +1,7 @@
+ <ul>
+  @for(item of slots;track item;let i = $index)
+  {
+   <li [class.active]="item?.id == slot_id" ><a href="javascript:void(0)" (click)="setSlotID(item);">{{item?.slot_code}}</a></li>
+  }
+
+ </ul>

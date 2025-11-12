@@ -1,0 +1,8 @@
+<div class="time-slot-grid" style="margin-top:20px;">
+  @for(item of bookingHours;track item;let i = $index)
+  {
+  <button (click)="selectSlot(item,i)" [disabled]="!end_available_hours.includes(item)" [class.active]="i>=arrival_index && i<=departure_index"  [class.disabled-slot]="!end_available_hours.includes(item)">{{item}}</button>
+  }
+
+</div>
+<div class="text-danger mt-3" *ngIf="submitting && arrivalForm.get('departure_slot')?.invalid">Please Select Departure Time</div>

@@ -1,0 +1,41 @@
+<div class="d-flex justify-content-between align-items-center tm-content-area-panel-table-top" [formGroup]="searchForm">
+  <div class="tm-content-area-panel-table-top-drd" style="width: 100%;">
+    <ng-select [items]="vehicle_types$ | async" bindLabel="name" bindValue="id" formControlName="car_type"
+      [placeholder]="'Vehicle Type'" [className]="'form-control'" [searchable]="true" [addTag]="false"></ng-select>
+    <input [owlDateTime]="dt1" class="form-control" [owlDateTimeTrigger]="dt1" placeholder="Date Range"
+      [selectMode]="'range'" formControlName="date_range" />
+    <owl-date-time #dt1 [pickerType]="'calendar'" [pickerMode]="'dialog'" (afterPickerClosed)="closeCalander($event)"></owl-date-time>
+    @if(showSlot)
+      {
+      <ng-select [items]="slot_masters$ | async" bindLabel="slot_code" bindValue="id" formControlName="slot_id"
+        [placeholder]="'Select Slot'" [className]="'form-control'" [searchable]="true" [addTag]="false"
+        [groupBy]="groupByFn"></ng-select>
+      }
+
+      <div class="d-flex gap-2">
+        <div class="tm-content-area-panel-table-top-drd-btn ">
+          <a class="tm-btn3" (click)="applyFilter()" href="javascript:void(0)">Apply</a>
+          <!-- <a class="tm-btn3 btn-danger">Reset</a> -->
+        </div>
+        <div class="tm-content-area-panel-table-top-drd-btn ">
+          <a class="btn btn-danger tm-btn3" style="background-color: #dc3545; border-color: #dc3545;"
+            href="javascript:void(0)" (click)="clearFilter()">Clear</a>
+        </div>
+      </div>
+
+  </div>
+  <!-- <div class="tm-parking-revenue-panel">
+        <div class="input-group">
+          <span class="input-group-text border-0" id="search-addon">
+            <i class="fas fa-search"></i>
+          </span>
+          <input
+            type="search"
+            class="form-control"
+            placeholder="Search Here..."
+            aria-label="Search"
+            aria-describedby="search-addon"
+          />
+        </div>
+      </div> -->
+</div>

@@ -1,0 +1,19 @@
+<form>
+  <!-- OTP input section -->
+  <div class="d-flex gap-2 justify-content-center">
+    <input
+      *ngFor="let otp of otpArray; let i = index"
+      maxlength="1"
+      (input)="onInput($event, i)"
+      (keyup)="onKeyDown($event, i)"
+      #otpInput
+      type="text"
+      class="form-control text-center otp-box"
+    />
+  </div>
+
+  <button type="button" class="btn btn-primary tm-btn mt-3" (click)="verifyOTP()">Verify OTP</button>
+  <div class="text-center tm-forget-password">
+    <a href="javascript:void(0)" (click)="resendOTP()">Resend OTP</a>
+  </div>
+</form>

@@ -1,0 +1,116 @@
+<div class="tm-content-area">
+  <div class="tm-dashboard-settings-main">
+    <app-profile></app-profile>
+    <app-change-password></app-change-password>
+    <div class="tm-dashboard-site-photo-panel-main">
+      <div class="tm-assign-parking-panel-form-box-title">
+        <h4>Site Photo</h4>
+      </div>
+      <div class="tm-dashboard-site-photo-panel">
+        <div class="tm-browse-file-box">
+          <label class="form-label"><b>Parking Spot Photo</b></label>
+          <img src="assets/img/browse-file-icon.svg" alt="" class="img-fluid" />
+          <app-file-uploader
+            (onFileUpload)="attachFiles($event)"
+            [MAX_UPLODS]="MAX_UPLODS"
+            #file_uploader
+          >
+          </app-file-uploader>
+          <div
+            class="text-danger"
+            *ngIf="submitting && parkingForm.get('files')?.hasError('required')"
+          >
+            Please Upload Atlest One Image.
+          </div>
+        </div>
+        <div class="preview-container mt-3 d-flex flex-wrap gap-2">
+          <div
+            class="preview-thumb position-relative"
+            *ngFor="let photo of photos; let i = index"
+          >
+            <img
+              [src]="photo.url"
+              alt="Preview"
+              class="img-thumbnail"
+              style="width: 150px; height: 150px"
+            />
+
+            <!-- Centered Remove Button -->
+            <button
+              type="button"
+              class="btn btn-danger btn-sm position-absolute top-50 start-50 translate-middle"
+              (click)="removePhoto(i)"
+            >
+              <i class="bi bi-trash"></i>
+            </button>
+          </div>
+          <div
+            class="preview-thumb position-relative"
+            *ngFor="let photo of parkingData?.image_previews; let i = index"
+          >
+            <img
+              [src]="photo"
+              alt="Preview"
+              class="img-thumbnail"
+              style="width: 150px; height: 150px"
+            />
+            <button type="button" class="btn btn-danger btn-sm position-absolute top-50 start-50 translate-middle"
+            (click)="removeExistingPhoto(i)">
+            <i class="bi bi-trash"></i>
+          </button>
+            <!-- Centered Remove Button -->
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <button
+            type="submit"
+            class="btn btn-primary mt-3 tm-btn"
+            [disabled]="!ParkingSpaceID"
+            (click)="onSubmit()"
+          >
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="tm-dashboard-slot-setting-panel-main">
+      <div class="tm-assign-parking-panel-form-box-title">
+        <h4>Slot Setting</h4>
+      </div>
+      @defer (on viewport) {
+      <app-slot-setting [ParkingSpaceID]="ParkingSpaceID" #setting_ref (OpenSlotModal)="openAddSlot()" />
+      } @placeholder {
+      <p>Loading...</p>
+      }
+    </div>
+  </div>
+</div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Parking Space</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <app-add-parking (onParkingCreate)="closeModal($event)" [parkingData]="parkingData"></app-add-parking>
+  </div>
+</ng-template>
+<ng-template #slot_content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Parking Slot</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <app-create-slot  (onSlotCreate)="closeslotModal($event)" [id]="parkingData?.id" [is_ev_charing]="parkingData?.is_ev_charing"></app-create-slot>
+  </div>
+</ng-template>
+

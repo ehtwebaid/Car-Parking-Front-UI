@@ -1,0 +1,279 @@
+<section class="tm-parking-space-features-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="tm-parking-space-features-page-title">
+          <h1>{{ parkingDetail?.title }}</h1>
+          <ul>
+            <li>
+              <span>{{ parkingDetail?.parkingslots?.length }} Space Available</span>
+            </li>
+            <li>
+              Hourly/Daily:
+              <span>{{
+                parkingDetail?.parkingslots[0]?.per_hour_price | currency
+                }}</span>
+            </li>
+            <li>
+              Monthly:
+              <span>{{
+                parkingDetail?.parkingslots[0]?.per_month_price | currency
+                }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="tm-parking-space-features-page-left">
+          <div class="tm-parking-space-features-page-left-slider">
+            <div class="carousel slide">
+              <div class="carousel-inner">
+                @if(parkingDetail?.photos.length>0){
+                <ngb-carousel [showNavigationIndicators]="false" [interval]="3000">
+                  @for (photo of parkingDetail?.photos; track $index) {
+                  <ng-template ngbSlide>
+                    <img src="{{ photo }}" class="img-fluid" alt="parking-space-features-slider" />
+                  </ng-template>
+                  }
+                </ngb-carousel>
+                }
+              </div>
+            </div>
+          </div>
+          <div class="tm-parking-space-features-sec">
+            <h3>Parking Space Features</h3>
+            <ul>
+              <li *ngIf="parkingDetail?.parkingslots[0]?.is_ev_charing">
+                <img src="assets/img/parking-space-features-icon1.svg" alt="" class="img-fluid" />EV Charging
+              </li>
+              <li>
+                <img src="assets/img/parking-space-features-icon2.svg" alt="" class="img-fluid" />Garage -
+                {{ parkingDetail?.parking_type_id == 1 ? "Covered" : "Open" }}
+              </li>
+              <li *ngIf="parkingDetail?.parkingslots[0]?.twenty_four_service">
+                <img src="assets/img/parking-space-features-icon3.svg" alt="" class="img-fluid" />24/7
+              </li>
+              <li *ngIf="parkingDetail?.parkingslots[0]?.is_cc_tv">
+                <img src="assets/img/parking-space-features-icon4.svg" alt="" class="img-fluid" />CCTV
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="tm-parking-space-features-page-right">
+          <google-map width="100%" height="610px" [center]="center" [zoom]="zoom" *ngIf="marker">
+            <!-- Single Marker -->
+            <map-marker #markerRef="mapMarker" [position]="marker.position" (mapClick)="openInfoWindow(markerRef)">
+            </map-marker>
+            <!-- Info Window -->
+            <map-info-window [position]="marker.position">
+              <div style="text-align: center; width: 200px">
+                <img [src]="marker.image" width="180" style="border-radius: 8px" />
+                <h4>{{ marker.title }}</h4>
+              </div>
+            </map-info-window>
+          </google-map>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="tm-parking-duration-sec">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="tm-parking-duration-sec-panel">
+          <div class="tm-parking-duration-sec-title text-center">
+            <h2>Pleases Select Your Parking Duration</h2>
+          </div>
+          <div class="tm-parking-duration-sec-panel-tab">
+            <div class="my-5">
+              <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav nav-tabs" (activeIdChange)="onTabChange($event)">
+                <li [ngbNavItem]="1" class="nav-item">
+                  <button ngbNavLink class="nav-link">Hourly/Daily</button>
+                  <ng-template ngbNavContent>
+                    <div class="tab-pane fade show active" id="hourly-daily" role="tabpanel"
+                      aria-labelledby="hourly-daily-tab">
+                      <div class="tm-parking-duration-sec-panel-tab-box tm-parking-duration-sec-panel-tab-box-daily">
+                        <div class="tm-check-in-time-panel">
+                          <div class="row">
+                            <div class="col-md-7">
+                              <div class="tm-check-in-time-panel-left">
+                                <div class="tm-assign-parking-panel-form-panel" style="margin-bottom: 40px">
+                                  <div class="tm-assign-parking-panel-form-right-panel">
+                                    <div class="tm-assign-parking-panel-form-right-panel-title">
+                                      <h4>Parking Slots</h4>
+                                    </div>
+                                    <div class="tm-assign-parking-panel-form-right-panel-list">
+                                      <app-slot-lists [slots]="parkingDetail?.parkingslots"
+                                        (changeSlot)="setTimeData($event)"></app-slot-lists>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="tm-assign-parking-panel-form-panel">
+                                  <app-parking-details (changeDateRange)="setDateRange($event)"
+                                    [slotAvailabilityFilter]="slotAvailabilityFilter"
+                                    [bookingType]="'hourly'"></app-parking-details>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-5">
+                              <div class="tm-assign-parking-panel-form-right" style="height: 100%">
+                                <div class="tm-assign-parking-panel-form-right-panel">
+                                  <div class="time-slot-box" style="margin-top: 0px"
+                                    [class.scrollable-div]="hasBookingInfo()">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                      <h3 class="mb-0 p-0">Time Slot</h3>
+                                      <span class="align-self-end">{{slotAvailabilityFilter?.start_date |
+                                        date:'dd/MM/yyyy'}}</span>
+                                    </div>
+
+
+                                    <app-arrival [bookingHours]="
+                                        parkingDetail?.booking_hours
+                                      " [slotDetail]="slotDetail" [slotAvailabilityFilter]="slotAvailabilityFilter"
+                                      (showSecondSlot)="setSecondSlot($event)"></app-arrival>
+                                    @if(showSecondSlot)
+                                    {
+                                    <div class="d-flex justify-content-center align-items-center mt-1 mb-3">
+                                      <span>{{slotAvailabilityFilter?.end_date | date:'dd/MM/yyyy'}}</span>
+                                    </div>
+                                    <hr />
+                                    <app-departure [bookingHours]="
+                                        parkingDetail?.booking_hours
+                                      " [end_available_hours]="end_available_hours"></app-departure>
+                                    }
+
+                                  </div>
+                                  @if(hasBookingInfo())
+                                  {
+                                  <div class="tm-booking-details-sec">
+
+                                    <app-booking-summary [bookingType]="'hourly'"></app-booking-summary>
+                                  </div>
+                                  }
+                                  @if(hasBookingInfo())
+                                  {
+                                  <div class="tm-booking-details-sec">
+
+                                    <app-payment-summary [bookingType]="'hourly'"></app-payment-summary>
+
+                                  </div>
+                                  }
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-template>
+                </li>
+
+                <li [ngbNavItem]="2" class="nav-item">
+                  <button ngbNavLink class="nav-link">Monthly</button>
+                  <ng-template ngbNavContent>
+                    <div class="tab-pane">
+                      <div class="tm-parking-duration-sec-panel-tab-box">
+                        <!-- Tab 2 -->
+                        <div class="accordion accordion-flush" ngbAccordion #accordion="ngbAccordion"
+                          (shown)="onPanelExpanded($event)" [closeOthers]="true">
+                          <div class="accordion-item" ngbAccordionItem="{{ 'calendar' }}"  [collapsed]="false">
+                            <h2 class="accordion-header" ngbAccordionHeader>
+                              <button class="accordion-button" type="button" ngbAccordionButton>
+                                Starting On
+                              </button>
+                            </h2>
+                            <div ngbAccordionCollapse>
+                              <div class="accordion-body" ngbAccordionBody>
+
+                                <div class="tm-check-in-time-panel">
+                                  <div class="tm-assign-parking-panel-form-panel" style="margin-bottom: 40px">
+                                    <div class="tm-assign-parking-panel-form-right-panel">
+                                      <div class="tm-assign-parking-panel-form-right-panel-title">
+                                        <h4>Parking Slots</h4>
+                                      </div>
+                                      <div class="tm-assign-parking-panel-form-right-panel-list">
+                                        <app-slot-lists [slots]="parkingDetail?.parkingslots"
+                                          (changeSlot)="setTimeData($event)"></app-slot-lists>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="tm-check-in-time-panel-calender">
+                                    <div class="calendar-box">
+                                      <app-monthly-calendar [weekday]="weekday" [weekend]="weekend"
+                                        [slotAvailabilityFilter]="slotAvailabilityFilter" #monthlyCalendar
+                                        (enableMonthlyBooking)="enableMonthlyBooking()"></app-monthly-calendar>
+
+                                    </div>
+                                    <!-- Time Slot -->
+                                    <div class="time-slot-box">
+                                      <h3>Monthly Duration</h3>
+                                      <div class="time-slot-grid">
+                                        <button class="active"
+                                          [class.active]="parkingDetail?.parkingslots[0]?.twenty_four_service">
+                                          24/7 Access
+                                        </button>
+                                        <button [class.active]="this.weekday">Monday -
+                                          Friday</button>
+                                        <button [class.active]="this.weekend" >Saturday &
+                                          Sunday</button>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="accordion-item" ngbAccordionItem="{{ 'payment' }}" [disabled]="disableMonthlyBooking">
+                            <h2 class="accordion-header" ngbAccordionHeader>
+                              <button class="accordion-button" type="button" ngbAccordionButton>
+                                Parking Details
+                              </button>
+                            </h2>
+                            <div ngbAccordionCollapse>
+                              <div class="accordion-body" ngbAccordionBody>
+                                <div class="tm-check-in-time-panel">
+                                  <div class="row">
+                                    <div class="col-md-7">
+                                      <app-parking-details [bookingType]="'monthly'"  [slotAvailabilityFilter]="slotAvailabilityFilter"></app-parking-details>
+                                    </div>
+                                    <div class="col-md-5">
+                                      <div class="tm-booking-details-sec">
+
+                                        <app-booking-summary [bookingType]="'monthly'"></app-booking-summary>
+                                      </div>
+                                      <div class="tm-booking-details-sec">
+
+                                        <app-payment-summary [bookingType]="'monthly'" [slotAvailabilityFilter]="slotAvailabilityFilter"></app-payment-summary>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                </div>
+
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-template>
+                </li>
+              </ul>
+
+              <div [ngbNavOutlet]="nav" class="tab-content mt-3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

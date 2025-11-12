@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="24" viewBox="0 0 100 24">
+  <!-- Visa -->
+  <rect x="0" y="0" width="24" height="16" rx="2" fill="#1A1F71"></rect>
+  <text x="12" y="12" font-family="Arial, sans-serif" font-size="8" fill="white" text-anchor="middle" alignment-baseline="middle">
+    VISA
+  </text>
+
+  <!-- Mastercard -->
+  <circle cx="45" cy="8" r="8" fill="#EB001B"></circle>
+  <circle cx="53" cy="8" r="8" fill="#F79E1B" opacity="0.8"></circle>
+
+  <!-- Amex -->
+  <rect x="70" y="0" width="24" height="16" rx="2" fill="#2E77BC"></rect>
+  <text x="82" y="12" font-family="Arial, sans-serif" font-size="7" fill="white" text-anchor="middle" alignment-baseline="middle">
+    AMEX
+  </text>
+</svg>

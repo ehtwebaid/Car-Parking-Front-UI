@@ -1,0 +1,150 @@
+<!-- Main Content Area -->
+<div class="tm-content-area">
+  <div class="tm-owner-dashboard-main">
+    <div class="row gap-Y-2" *ngIf="stats$ | async as stats">
+      <div class="col-md-3">
+        <div class="tm-owner-dashboard-panel">
+          <div class="tm-owner-dashboard-panel-icon">
+            <img src="assets/img/owner-dashboard-icon1.svg" alt="" class="img-fluid" />
+          </div>
+          <div class="tm-owner-dashboard-panel-text">
+            <p>Life Time Parking</p>
+            <h3>{{(stats?.life_time_booking || 0) | number}}</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="tm-owner-dashboard-panel">
+          <div class="tm-owner-dashboard-panel-icon">
+            <img src="assets/img/owner-dashboard-icon2.svg" alt="" class="img-fluid" />
+          </div>
+          <div class="tm-owner-dashboard-panel-text">
+            <p>Total Parking Slots</p>
+            <h3>{{(stats?.total_slot || 0) | number}}</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="tm-owner-dashboard-panel">
+          <div class="tm-owner-dashboard-panel-icon">
+            <img src="assets/img/owner-dashboard-icon3.svg" alt="" class="img-fluid" />
+          </div>
+          <div class="tm-owner-dashboard-panel-text">
+            <p>Available slots</p>
+            <h3>{{(stats?.total_active_slot || 0) | number}}</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="tm-owner-dashboard-panel">
+          <div class="tm-owner-dashboard-panel-icon">
+            <img src="assets/img/owner-dashboard-icon4.svg" alt="" class="img-fluid" />
+          </div>
+          <div class="tm-owner-dashboard-panel-text">
+            <p>Today Income</p>
+            <h3>{{(stats?.today_income?.today_income || 0) | currency}}</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="tm-owner-dashboard-panel">
+          <div class="tm-owner-dashboard-panel-icon">
+            <img src="assets/img/owner-dashboard-icon5.svg" alt="" class="img-fluid" />
+          </div>
+          <div class="tm-owner-dashboard-panel-text">
+            <p>This Month Income</p>
+            <h3>{{(stats?.this_month_income?.montly_income || 0) | currency}}</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="tm-owner-dashboard-panel">
+          <div class="tm-owner-dashboard-panel-icon">
+            <img src="assets/img/owner-dashboard-icon6.svg" alt="" class="img-fluid" />
+          </div>
+          <div class="tm-owner-dashboard-panel-text">
+            <p>This Year Income</p>
+            <h3>{{(stats?.this_year_income?.yearly_income || 0) | currency}}</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="tm-owner-dashboard-panel">
+          <div class="tm-owner-dashboard-panel-icon">
+            <img src="assets/img/owner-dashboard-icon7.svg" alt="" class="img-fluid" />
+          </div>
+          <div class="tm-owner-dashboard-panel-text">
+            <p>Available EV Slots</p>
+            <h3>{{(stats?.total_ev_slot || 0) | number}}</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="tm-owner-dashboard-panel">
+          <div class="tm-owner-dashboard-panel-icon">
+            <img src="assets/img/owner-dashboard-icon8.svg" alt="" class="img-fluid" />
+          </div>
+          <div class="tm-owner-dashboard-panel-text">
+            <p>Booked EV Slots</p>
+            <h3>{{(stats?.total_active_ev_slot || 0) | number}}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tm-owner-dashboard-chart">
+    <div class="custom-card">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4>Payment Overview</h4>
+
+        <div ngbDropdown class="d-inline-block">
+          <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+            @switch (collectionFilterForm.value.data_type) {
+                @case ('monthly') { This Year }
+                @case ('quarterly') { This Quarter }
+                @case ('daily') { This Month }
+              }
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem (click)="changeCollectionFilter('daily')">This Month</button>
+            <button ngbDropdownItem (click)="changeCollectionFilter('quarterly')">This Quarter</button>
+            <button ngbDropdownItem (click)="changeCollectionFilter('monthly')">This Year</button>
+          </div>
+        </div>
+      </div>
+      <div class="chart-wrapper">
+        @if(commonService.isBrowser()){
+        <canvas baseChart #collectionChart="base-chart" [data]="paymentChartData" [options]="paymentChartOptions" [type]="'line'"></canvas>
+
+        }
+      </div>
+    </div>
+  </div>
+  <div class="tm-owner-dashboard-chart mt-5">
+    <div class="custom-card">
+      <div class="d-flex justify-content-between align-items-center">
+        <h4>Booking Overview</h4>
+        <div ngbDropdown class="d-inline-block">
+          <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+            @switch (bookingFilterForm.value.data_type) {
+                @case ('monthly') { This Year }
+                @case ('quarterly') { This Quarter }
+                @case ('daily') { This Month }
+              }
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem (click)="changeBookingFilter('daily')">This Month</button>
+            <button ngbDropdownItem (click)="changeBookingFilter('quarterly')">This Quarter</button>
+            <button ngbDropdownItem (click)="changeBookingFilter('monthly')">This Year</button>
+          </div>
+        </div>
+      </div>
+      <div class="chart-wrapper">
+        @if(commonService.isBrowser()){
+        <canvas id="bookingOverview" baseChart  #bookingChart="base-chart" [data]="bookingchartData" [options]="bookingchartOptions"
+          [type]="'line'"></canvas>
+        }
+      </div>
+    </div>
+  </div>
+</div>

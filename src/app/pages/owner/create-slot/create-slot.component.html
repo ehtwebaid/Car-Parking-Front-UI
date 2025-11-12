@@ -1,0 +1,113 @@
+<form
+  class="tm-parking-management-system-page-panel-form"
+  [formGroup]="parkingForm"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="tm-dashboard-settings-text-panel-main" style="padding-top: 3px">
+    <div
+      class="tm-dashboard-settings-user-profile-panel tm-dashboard-settings-text-panel"
+    >
+      <div class="row">
+        <div class="col-md-12 mb-3">
+          <label class="form-label">Number of Parking Slots</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder=""
+            formControlName="total_slot"
+            appNumeric
+            [class.is-invalid]="
+              submitting && parkingForm.get('total_slot')?.invalid
+            "
+          />
+          <div
+            class="invalid-feedback"
+            *ngIf="submitting && parkingForm.get('total_slot')?.hasError('required')"
+          >
+            Parking Slots is required.
+          </div>
+          <div
+            class="invalid-feedback"
+            *ngIf="submitting && parkingForm.get('ev_charing_slot')?.hasError('min')"
+          >
+            Parking Slots must be at least
+            {{ parkingForm.get('ev_charing_slot')?.errors?.['min'].min }}
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="check1"
+              value="option1"
+              formControlName="is_ev_charing"
+            />
+            <label class="form-check-label" for="check1"
+              >EV Charge Available</label
+            >
+          </div>
+        </div>
+
+        @if(parkingForm.get('is_ev_charing')?.value){
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Number of EV Charging Slots</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder=""
+            formControlName="ev_charing_slot"
+            [class.is-invalid]="
+              submitting && parkingForm.get('ev_charing_slot')?.invalid
+            "
+          />
+          <div
+            class="invalid-feedback"
+            *ngIf="submitting && parkingForm.get('ev_charing_slot')?.hasError('required')"
+          >
+            EV Charge Slot is required.
+          </div>
+          <div
+            class="invalid-feedback"
+            *ngIf="submitting && parkingForm.get('ev_charing_slot')?.hasError('min')"
+          >
+            EV Charge Slot must be at least
+            {{ parkingForm.get('ev_charing_slot')?.errors?.['min'].min }}.
+          </div>
+        </div>
+        <div class="col-md-6 mb-3" *ngIf="!is_ev_charing">
+          <label class="form-label">EV Chargeing Price</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder=""
+            formControlName="ev_charging_price"
+            [class.is-invalid]="
+              submitting && parkingForm.get('ev_charging_price')?.invalid
+            "
+          />
+          <div
+            class="invalid-feedback"
+            *ngIf="parkingForm.get('ev_charging_price')?.hasError('required')"
+          >
+            EV Chargeing Price is required.
+          </div>
+          <div
+            class="invalid-feedback"
+            *ngIf="submitting && parkingForm.get('ev_charging_price')?.hasError('min')"
+          >
+            EV Chargeing Price must be at least
+            {{ parkingForm.get('ev_charging_price')?.errors?.['min'].min }}.
+          </div>
+        </div>
+        }
+
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-primary mt-3 tm-btn">
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

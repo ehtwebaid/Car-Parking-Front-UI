@@ -1,0 +1,83 @@
+<form class="tm-parking-management-system-page-panel-form" [formGroup]="arrivalForm" (ngSubmit)="submitData()">
+  @if(bookingType=='hourly')
+  {
+     <div class="mb-3">
+    <label for="parkingDuration" class="form-label">Parking Duration</label>
+    <div class="input-group">
+
+      <input [owlDateTime]="dt1" class="form-control" [owlDateTimeTrigger]="dt1" placeholder="Select duration"
+        [selectMode]="selectMode" formControlName="date_range"
+        [class.is-invalid]="submitting && arrivalForm.get('date_range')?.invalid" />
+      <span class="input-group-text" [owlDateTimeTrigger]="dt1">
+        <i class="fa-solid fa-calendar-days"></i>
+      </span>
+      <div class="invalid-feedback">Parking Duration is required.</div>
+
+    </div>
+    <owl-date-time #dt1 [pickerType]="'calendar'" [pickerMode]="'dialog'"
+      (afterPickerClosed)="closeCalander($event);"></owl-date-time>
+  </div>
+  }
+
+  <div class="mb-3">
+    <label for="chargingSlot" class="form-label">Vehicle Number</label>
+    <input type="text" class="form-control" id="chargingSlot" formControlName="vehicle_number"
+      [class.is-invalid]="submitting && arrivalForm.get('vehicle_number')?.invalid" />
+    <div class="invalid-feedback">Vehicle Number is required.</div>
+  </div>
+  <div class="mb-3">
+    <label for="carType" class="form-label">Car Type</label>
+
+    <ng-select [items]="vehicle_types$ | async" bindLabel="name" bindValue="id" formControlName="car_type"
+      [placeholder]="'Vehicle Type'" [searchable]="true" [addTag]="false"></ng-select>
+    <span class="text-danger" *ngIf="submitting && arrivalForm.get('car_type')?.invalid">Car Type is required.</span>
+  </div>
+  @if(this.slotAvailabilityFilter?.slot?.is_ev_charing)
+  {
+  <div class="mb-3">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" formControlName="is_ev_charing"
+        (change)="setEVCharging($event)" />
+      <label class="form-check-label" for="flexCheckChecked">
+        Add EV Charging Facility
+      </label>
+    </div>
+  </div>
+  }
+
+  <ng-container formGroupName="slot">
+    <div class="mb-3">
+      <label for="chargingSlot" class="form-label">Parking Slot</label>
+      <input type="text" class="form-control" id="chargingSlot" formControlName="slot_code" readonly
+        [class.is-invalid]="submitting && arrivalForm.get('slot.slot_code')?.invalid" />
+      <div class="invalid-feedback">Slot is required.</div>
+    </div>
+  </ng-container>
+
+  @if(slotAvailabilityFilter?.slot?.is_ev_charing)
+  {
+  <div class="mb-3">
+    <label for="chargingDuration" class="form-label">Add Charging Duration @if(bookingType=='monthly'){Total Per Month}</label>
+    <input type="text" class="form-control" formControlName="ev_charing_duration" placeholder="Hours" appNumeric
+      [class.is-invalid]="submitting && arrivalForm.get('ev_charing_duration')?.invalid" [readonly]="!arrivalForm.get('is_ev_charing')?.value">
+    <div class="invalid-feedback" *ngIf="arrivalForm.get('ev_charing_duration')?.hasError('required')">Charging Duration
+      is required.</div>
+    <div class="invalid-feedback" *ngIf="arrivalForm.get('ev_charing_duration')?.hasError('min')">Minimum Duration is 1
+      Hour.</div>
+
+  </div>
+  }
+
+  <div class="text-center mt-5">
+    <button type="submit" class="btn btn-primary tm-btn">
+      Add Parking
+    </button>
+     @if(bookingType=='hourly')
+     {
+      <button type="button" class="btn btn-danger tm-btn reload_btn" style="margin-left: 4px;" (click)="resetTime();">
+      <i class="fa fa-refresh" aria-hidden="true"></i> Reset Time
+    </button>
+     }
+
+  </div>
+</form>

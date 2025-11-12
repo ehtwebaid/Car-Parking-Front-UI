@@ -1,0 +1,5 @@
+<div class="custom-file-drop"  appDragDrop (fileDropped)="onFileDropped($event)" [MAX_UPLODS]="MAX_UPLODS">
+  <p>Choose a file or drag &amp; drop it here</p>
+  <small>JPEG, PNG, SVG,WEBP format, up to 2 MB</small>
+  <input type="file" class="form-control mt-2" accept="image/*" (change)="onFilesSelected($event)" multiple #fileInput [disabled]="MAX_UPLODS<=0">
+</div>

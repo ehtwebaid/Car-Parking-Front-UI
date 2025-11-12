@@ -1,0 +1,396 @@
+@charset "utf-8";
+/* CSS Document */
+@media (min-width: 3601px) and (max-width: 5464px) {
+    .tm-banner-sec {height: 842px;}
+    .tm-banner-video {height: 842px;}
+}
+@media (min-width: 2501px) and (max-width: 3600px) {
+	.tm-banner-sec {height: 842px;}
+    .tm-banner-video {height: 842px;}
+}
+@media (min-width: 2501px) and (max-width: 3600px) {
+	.tm-banner-sec {height: 1354px;}
+    .tm-banner-video {height: 1354px;}
+}
+@media (min-width: 2048px) and (max-width: 2500px) {
+	.tm-banner-sec {height: 1013px;}
+    .tm-banner-video {height: 1013px;}
+}
+@media (min-width: 1821px) and (max-width: 2048px) {
+    .tm-banner-sec {height: 900px;}
+    .tm-banner-video {height: 900px;}
+}
+@media (min-width: 1707px) and (max-width: 1821px) {
+	.tm-banner-sec {height: 844px;}
+    .tm-banner-video {height: 844px;}
+}
+@media (min-width: 1525px) and (max-width: 1707px) {
+    .tm-banner-sec {height: 762px;}
+    .tm-banner-video {height: 762px;}
+}
+@media (min-width: 1367px) and (max-width: 1525px) {
+.tm-banner-sec {height: 748px;}
+    .tm-banner-video {height: 748px;}
+}
+@media (min-width: 1200px) and (max-width: 1365px) {
+    body {font-size: 18px;}
+    h1 {font-size: 44px;}
+    h2 {font-size: 34px;}
+    h3 {font-size: 28px;}
+    h4 {font-size: 24px;}
+    .tm-footer-logo img, .tm-header-menu img {width: 140px;}
+    .tm-banner-sec{height: 600px;}
+    .tm-banner-video {height: 600px;}
+    .tm-location-card-page-booking-panel-img img {min-height: 276px;}
+    .tm-find-perfect-spoot-sec-panel-text h4 {font-size: 21px;}
+    .tm-btn,.tm-btn2 {padding: 8px 18px; font-size: 16px;}
+    .tm-parking-duration-sec-panel-tab .accordion-button {font-size: 26px;}
+    .tm-check-in-time-panel .calendar-header span {font-size: 24px;}
+    .tm-check-in-time-panel .calendar-header i {font-size: 24px;}
+    .tm-check-in-time-panel .calendar-days div {font-size: 18px;}
+    .tm-check-in-time-panel .calendar-dates div span {height: 44px;width: 44px;line-height: 44px;font-size: 20px;}
+    .tm-check-in-time-panel .time-slot-grid button {font-size: 16px; padding: 8px 14px;}
+    .tm-content-area-top-panel .text-end {font-size: 24px;}
+    .tm-content-area-top-panel ul li h3 {font-size: 24px;}
+    .tm-dashboard-main .topbar .input-group {width: 350px;}
+    .tm-dashboard-main .tm-logout-btn {margin-top: 80px;}
+    .tm-owner-dashboard-panel-text p {font-size: 14px;}
+    .tm-owner-dashboard-panel {padding: 20px 10px;}
+    .tm-owner-dashboard-panel-text h3 {font-size: 22px;}
+}
+@media (min-width: 1025px) and (max-width: 1200px) {
+    body {font-size: 16px;}
+    h1 {font-size: 40px;}
+    h2 {font-size: 34px;}
+    h3 {font-size: 28px;}
+    h4 {font-size: 24px;}
+    .tm-header-menu a {font-size: 18px;}
+    .tm-header-btn a {margin-left: 15px;}
+    .tm-btn,.tm-btn2 {padding: 10px 15px;font-size: 16px;}
+    .tm-faq-sec-panel .accordion-button {font-size: 28px;}
+    .tm-banner-video {height: 514px;}
+    .tm-banner-sec {height:  514px;}
+    .tm-banner-sec-left-form .form-icon-group select, .tm-banner-sec-left-form .form-icon-group input {padding: 10px 20px 10px 38px; font-size: 16px;}
+    .tm-location-card-page-booking-panel {display: block;}
+        .tm-location-card-page-booking-panel-img img {border-radius: 8px 8px 0 0;}
+        .tm-location-card-page-booking-panel-text-top {min-height: 136px;}
+        .tm-location-card-page-booking-panel-text {padding: 10px 10px 0;}
+        .tm-location-card-page-booking-panel-img img {width: 100%; min-height: 276px;}
+        .tm-location-card-page-booking-panel-text-list ul li {font-size: 16px;}
+        .tm-location-card-page-booking-panel-text-list ul li span {font-size: 16px;}
+        .tm-location-card-page-booking-panel-text-title {min-height: 76px;}
+        .tm-payment-summary-order-total-text span {font-size: 26px;}
+        .tm-payment-summary-order-total-text h4 {font-size: 20px;}
+        .tm-parking-space-features-sec ul li img {margin-right: 5px;width: 18px;}
+        .tm-parking-space-features-sec ul li {font-size: 14px;}
+        .tm-parking-space-features-page-left-slider .carousel-item img {height: 250px;}
+        .tm-parking-duration-sec-panel-tab .nav-tabs .nav-link {font-size: 16px;width: 180px;padding: 10px;}
+        .tm-parking-duration-sec-panel-tab .accordion-button {font-size: 26px;}
+        .tm-check-in-time-panel .calendar-header span {font-size: 24px;}
+        .tm-check-in-time-panel .calendar-header i {font-size: 24px;}
+        .tm-check-in-time-panel .calendar-days div {font-size: 16px;}
+        .tm-check-in-time-panel .calendar-dates div span {height: 40px; width: 40px; line-height: 40px; font-size: 16px;}
+        .tm-check-in-time-panel .time-slot-grid button {font-size: 16px;padding: 10px 14px;}
+        .tm-content-area-top-panel .text-end {font-size: 25px;}
+        .tm-parking-revenue-panel .input-group {width: 270px;}
+        .tm-dashboard-main .topbar .input-group {width: 320px;}
+        .tm-dashboard-main .topbar h3 {font-size: 22px;}
+        .tm-dashboard-topbar-right {gap: 10px;}
+        .tm-dashboard-topbar-right-dropdown .dropdown span {font-size: 14px;}
+        .tm-dashboard-topbar-right-dropdown .dropdown h5 {font-size: 18px;}
+        .tm-dashboard-topbar-notification a {width: 40px;height: 40px;line-height: 40px;}
+        .tm-content-area-top-panel ul li span {width: 150px;}
+        .tm-content-area-top-panel ul li h3 {font-size: 20px;}
+        .tm-content-area-top-panel .text-end {font-size: 20px;}
+        .tm-dashboard-logo img {width: 120px;}
+        .tm-dashboard-main .tm-logout-btn {margin-top: 80px;}
+        .tm-owner-dashboard-panel-text p {margin-bottom: 5px;font-size: 14px;line-height: 1;}
+        .tm-owner-dashboard-panel-text h3 {font-size: 20px;}
+}
+@media (min-width: 992px) and (max-width: 1024px) {
+    body {font-size: 16px;}
+    h1 {font-size: 38px;}
+    h2 {font-size: 30px;}
+    h3 {font-size: 26px;}
+    h4 {font-size: 22px;}
+   .tm-header-btn a{margin-left: 15px;}
+   .tm-btn,.tm-btn2 {padding: 8px 14px;font-size: 16px;}
+   .tm-faq-sec-panel .accordion-button {font-size: 26px;}
+   .tm-find-perfect-spoot-sec-panel {min-height: 317px;}
+   .tm-banner-sec-left-form .form-icon-group select, .tm-banner-sec-left-form .form-icon-group input {padding: 10px 30px 10px 30px;}
+    .tm-banner-video {height: 496px;}
+    .tm-banner-sec {height: 496px;}
+    .tm-banner-sec-left-form .search-box {padding: 25px 20px;}
+    .tm-dashboard-main .tm-logout-btn {margin-top: 80px;}
+    .tm-content-area-top-panel .text-end {font-size: 20px;}
+    .tm-content-area-top-panel ul li h3 {font-size: 20px;}
+    .tm-content-area-top-panel ul li span {width: 140px;}
+    .tm-parking-revenue-panel .input-group {width: 250px;}
+    .tm-dashboard-main .topbar .input-group {width: 300px;}
+    .tm-dashboard-main .topbar h3 {font-size: 22px;}
+    .tm-dashboard-topbar-right {gap: 10px;}
+    .tm-dashboard-topbar-right-dropdown .dropdown span {font-size: 14px;}
+    .tm-dashboard-topbar-right-dropdown .dropdown h5 {font-size: 18px;}
+    .tm-dashboard-topbar-notification a {width: 40px;height: 40px;line-height: 40px;}
+    .tm-dashboard-content {width: 100%;padding-left: 0px;}
+    .tm-content-area {padding-left: 250px; margin-top: 120px;}
+    .tm-sidebar {width: 23%;}
+    .tm-check-in-time-panel h4 {margin-bottom: 20px;}
+    .tm-booking-calendar-panel {padding: 30px 20px 50px;}
+    .tm-dashboard-footer {padding-left: 25%;}
+    .tm-assign-parking-panel-form-right {padding: 30px 20px;}
+    .tm-assign-parking-panel-form-panel {padding: 30px 20px;}
+    .tm-notification-page-main .request-card {font-size: 13px;}
+    .tm-notification-page-main .time-text {font-size: 13px;}
+    .tm-notification-page-main .status-text {font-size: 13px;}
+    .tm-notification-page-main .assign-btn {font-size: 14px;}
+    .tm-notification-page-main .deny-btn {font-size: 14px;}
+    .tm-parking-space-features-sec ul li {font-size: 14px;}
+    .tm-parking-space-features-sec ul li img {margin-right: 5px; width: 20px;}
+    .tm-parking-space-features-sec h3 {font-size: 24px;}
+    .tm-assign-parking-panel-form-right-panel-list li a {padding: 12px 14px;}
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+    .tm-banner-sec-left-form .form-icon-group i {font-size: 16px;}
+    .tm-banner-sec-left-form .form-icon-group select, .tm-banner-sec-left-form .form-icon-group input {font-size: 16px;}
+    .tm-why-chose-us-sec-panel {padding: 20px 12px;}
+    .tm-find-perfect-spoot-sec-panel-text h4 {font-size: 18px;}
+    .tm-location-card-page-left-price .price-wrap #one, .tm-location-card-page-left-price .price-wrap #two {width: 38px; font-size: 14px;}
+    .tm-location-card-page-left-list-panel label.form-check-label {font-size: 14px;}
+    #sidebar {min-width: 29%;}
+    #sidebar.fixed {width: 29.5%;}
+    .tm-location-card-page-booking-panel {display: block;}
+    .tm-location-card-page-booking-panel-img img {border-radius: 8px 8px 0 0;}
+    .tm-location-card-page-booking-panel-text-top {min-height: 136px;}
+    .tm-location-card-page-booking-panel-text {padding: 10px 10px 0;}
+    .tm-location-card-page-booking-panel-img img {width: 100%; min-height: 234px;}
+    .tm-location-card-page-booking-panel-text-list ul li {font-size: 12px;}
+    .tm-location-card-page-booking-panel-text-list ul li span {font-size: 12px;}
+    .tm-location-card-page-booking-panel-text-title {min-height: 76px;}
+    .tm-log-in-page-form .form-control {height: 36px;}
+    .tm-check-in-time-panel .calendar-days div {font-size: 14px;}
+    .tm-check-in-time-panel .calendar-dates div span {height: 40px; width: 40px; line-height: 40px; font-size: 14px;}
+    .tm-check-in-time-panel .time-slot-grid button {padding: 12px 12px;}
+    .tm-check-in-time-panel .calendar-header span {font-size: 22px;}
+    .tm-check-in-time-panel .calendar-header i {font-size: 22px;}
+    .tm-check-in-time-panel .time-slot-grid button {font-size: 15px;padding: 8px 10px;}
+    .tm-parking-duration-sec-panel-tab .accordion-button {font-size: 24px;}
+    .tm-parking-duration-sec-panel-tab .nav-tabs .nav-link {font-size: 16px; width: 180px; padding: 10px 12px;}
+    .tm-parking-space-features-page-title ul li {font-size: 18px;}
+    .tm-parking-space-features-sec {padding: 14px;}
+    .tm-parking-space-features-page-left-slider .carousel-item img {height: 220px;}
+    .tm-dashboard-main .topbar {padding: 15px 20px 15px 250px;}
+    .tm-owner-dashboard-panel-text h3 {font-size: 20px;}
+    .tm-owner-dashboard-panel {padding: 20px 10px;}
+    .tm-owner-dashboard-panel-text p {font-size: 14px;line-height: 1;margin-bottom: 8px;}
+    .tm-booking-details-sec-list ul li .form-check {padding: 0 0 0 22px !important;}
+}
+@media only screen and (max-width: 991px) {
+    .tm-header-menu img{width: 160px}
+    .tm-header .navbar-toggler {padding: 0;}
+    .tm-header .navbar-toggler-icon {color: #3B82F6;font-size: 28px; height: auto;}
+    .tm-header .navbar-toggler-icon.tm-menu-bar-click i:before{content: '\f00d';}
+    .tm-header .navbar-nav {padding: 10px 0 20px;}
+    .tm-header-btn a {margin: 0 10px 0 0; }
+    .tm-header-menu a {padding: 8px 0 !important;display: block;border-bottom: 1px solid;}
+    .tm-header-btn {padding: 0 0 20px;}
+    .tm-header .navbar-toggler:focus {box-shadow: none;}
+    .tm-banner-sec-left-form .form-icon-group select, .tm-banner-sec-left-form .form-icon-group input {padding: 10px 30px 10px 30px;}
+    .tm-payment-summary-order-total-text span {font-size: 26px;}
+    .tm-dashboard-content {width: 100%;}
+    .tm-dashboard-footer {padding-left: 30px;}
+    .tm-content-area {padding: 0 15px;}
+    .tm-booking-calendar-panel {padding: 30px 10px 50px;}
+    .tm-mob-logo-panel {position: fixed; width: 100%; background-color: #fff; box-shadow: rgba(0, 0, 0, 0.15) 1px 2px 8px 2px; z-index: 9;}
+    .tm-dashboard-main .topbar {padding: 80px 20px 15px 20px;}
+    .tm-sidebar{padding-top: 80px; width: 100% !important;}
+    .tm-dashboard-logo {padding-left: 0;margin-bottom: 0;}
+    .tm-offcanvas-on-mobile .offcanvas-header{padding: 0 20px;}
+    .tm-check-in-time-panel h4 {margin-bottom: 20px;}
+    .tm-mob-logo-panel .navbar-toggler-icon {height: auto;}
+    .tm-offcanvas-on-mobile .offcanvas-backdrop {position: unset;}
+}
+@media (min-width: 767px) and (max-width: 991px) {
+    body {font-size: 15px;}
+    h1 {font-size: 30px;}
+    h2 {font-size: 26px;}
+    h3 {font-size: 22px;}
+    h4 {font-size: 20px;}
+    h5 {font-size: 16px;}
+    .tm-btn,.tm-btn2 {padding: 8px 16px;font-size: 16px;}
+    .tm-faq-sec-panel .accordion-button {font-size: 22px;}
+    .tm-banner-sec {height: 530px;}
+    .tm-banner-video {height: 530px;}
+    .tm-banner-sec-left {padding-right: 0;}
+    .tm-banner-sec-left-form .search-box {padding: 20px 15px;}
+    .tm-banner-sec-left-form .form-icon-group select, .tm-banner-sec-left-form .form-icon-group input {padding: 6px 30px 6px 30px; }
+    .tm-booking-details-sec-list ul li {font-size: 14px;}
+    .tm-content-area {margin-top: 50px;}
+    .tm-parking-revenue-panel .input-group {width: 250px;}
+    .tm-dashboard-main .topbar {position: unset;}
+    .tm-all-parking-list-table td, .tm-all-parking-list-table th {font-size: 12px;}
+    .tm-dashboard-main .topbar .input-group {width: 293px;}
+    .tm-parking-management-system-page-panel-form .form-select {padding: 10px 20px;}
+    .tm-parking-management-system-page-panel-form .form-control {padding: 10px 20px;}
+    .tm-assign-parking-panel-form-right {padding: 30px 20px;}
+    .tm-assign-parking-panel-form-panel {padding: 30px 20px;}
+    .tm-parking-space-features-sec ul {display: block;}
+    .tm-parking-space-features-sec ul li {width: 100%;}
+}
+@media only screen and (max-width: 767px){
+    body {font-size: 15px;}
+    h1 {font-size: 36px;}
+    h2 {font-size: 28px;}
+    h3 {font-size: 24px;}
+    h4 {font-size: 20px;}
+    h5 {font-size: 16px;}
+    .tm-footer-logo a img{width: 120px;}
+    .tm-header-menu img{width: 150px}
+    .tm-btn,.tm-btn2 {padding: 10px 12px;font-size: 16px;}
+    .tm-banner-sec {height: auto;}
+    .tm-banner-video {width: 100%;height: 100%;position: inherit; border-radius: 0;}
+    .tm-banner-sec-left {padding-right: 0; padding: 50px 0;}
+    .tm-banner-sec-left-text {text-align: center;}
+    .tm-why-chose-us-sec-text {text-align: center;}
+    .tm-why-chose-us-sec-text-main .row .col-md-6:first-child {position: unset;}
+    .tm-why-chose-us-sec-text-main .row .col-md-6:nth-child(3) {position: unset;}
+    .tm-why-chose-us-sec-text {margin-top: 0;}
+    .tm-why-chose-us-sec {padding: 50px 0 50px;}
+    .tm-custom-padding {padding: 50px 0;}
+    .tm-want-share-spot-text {padding: 30px 0 0; text-align: center;}
+    .tm-faq-sec-panel .accordion-button {font-size: 24px;}
+    .tm-footer-top {padding: 50px 0;}
+    .tm-footer-bottom-left {text-align: center;}
+    .tm-footer-bottom-right {text-align: center;margin-top: 10px;}
+    .tm-footer-title{margin-top: 30px;}
+    .tm-find-perfect-spoot-sec-panel {min-height: auto;}
+     #sidebar {width: auto;position: unset !important; margin-bottom: 40px;}
+     #sidebar.fixed {width: auto;position: unset !important; margin-bottom: 40px;}
+     .tm-banner-sec-left-form .form-icon-group select, .tm-banner-sec-left-form .form-icon-group input {font-size: 16px;}
+     .tm-banner-sec-left-form .form-icon-group i {font-size: 16px;}
+     .tm-how-parking-works-sec-panel-img {text-align: center;}
+     .tm-location-card-page-booking-panel-text-top {min-height: 150px;}
+     .tm-location-card-page-booking-panel-img img {min-height: 230px;}
+     .tm-parking-space-features-page-left-slider .carousel-item img {height: 300px;}
+     .tm-check-in-time-panel-calender {display: block;}
+     .tm-check-in-time-panel .calendar-box {width: 100%;}
+     .tm-check-in-time-panel .time-slot-box {width: 100%;}
+     .tm-check-in-time-panel .time-slot-box {margin-top: 30px;}
+     .tm-parking-duration-sec-panel {padding: 25px 0;}
+     .tm-daily-booking-price-page-right {margin-top: 30px;}
+     .tm-booking-details-sec {padding: 30px 15px;}
+     .tm-log-in-page-img img {height: auto; border-radius: 0;}
+     .tm-log-in-page-text {padding: 50px 20px 50px 20px;}
+     .tm-parking-space-features-page-title ul li {font-size: 15px;}
+     .tm-parking-space-features-page-right {margin-top: 50px;}
+     .tm-parking-duration-sec-panel {margin-top: 50px;}
+     .tm-parking-duration-sec-panel-tab .nav-tabs .nav-link {font-size: 16px; width: 160px; padding: 10px 16px;}
+     .tm-check-in-time-panel .calendar-header span {font-size: 22px;}
+     .tm-check-in-time-panel .calendar-header i {font-size: 22px;}
+     .tm-check-in-time-panel .calendar-days div {font-size: 16px;}
+     .tm-check-in-time-panel .calendar-dates div span {height: 40px;width: 40px;line-height: 40px;font-size: 16px; margin: 2px;}
+     .tm-check-in-time-panel .time-slot-grid {gap: 10px;}
+     .tm-check-in-time-panel .time-slot-grid button {font-size: 14px; padding: 6px 11px;}
+     .tm-parking-duration-sec {padding-bottom: 60px;}
+     .tm-booking-details-sec-list ul li .form-check {padding: 0 0 0 23px !important;}
+     .tm-parking-duration-sec-panel-tab .accordion-button {font-size: 24px;}
+     .tm-content-area-panel-table-top {display: block !important;}
+     .tm-dashboard-content { width: 100%;}
+     .tm-dashboard-main .topbar {display: block; padding: 80px 15px 20px;}
+     .tm-parking-revenue-panel {display: block;}
+     .tm-parking-revenue-panel .input-group {margin: 15px 0;}
+     .tm-dashboard-footer {text-align: center; display: block;}
+     .tm-dashboard-footer p {margin: 5px 0;}
+     .tm-content-area-top-panel-main {padding: 40px 15px;}
+     .tm-content-area-top-panel ul li span {width: 128px;}
+     .tm-content-area-top-panel ul li h3 {font-size: 17px;}
+     .tm-content-area-top-panel .text-end {font-size: 20px;}
+     .tm-content-area {margin-top: 50px;}
+     .tm-dashboard-main .topbar {position: unset;}
+     .tm-check-in-time-panel h4 {margin-bottom: 10px;}
+     .tm-booking-calendar-panel-btn {justify-content: center;}
+     .tm-assign-parking-panel-form-right {padding: 30px 15px;}
+     .tm-dashboard-settings-user-profile-panel {padding: 30px 10px;}
+     .tm-dashboard-settings-main {padding: 30px 10px;}
+     .tm-dashboard-slot-setting-panel {padding: 30px 10px 50px;}
+     .tm-dashboard-slot-setting-panel-right {margin-top: 30px;}
+     .tm-dashboard-slot-setting-panel-box {padding: 30px 10px;}
+     .tm-dashboard-site-photo-panel {padding: 30px 10px;}
+     .tm-parking-management-system-page-panel-form .form-control {padding: 8px 20px;}
+     .tm-notification-page-main .profile-img {margin-bottom: 10px;}
+     .tm-notification-page-main .request-card {padding: 20px;}
+     .tm-assign-parking-panel-form-right {margin-top: 30px;}
+     .tm-parking-management-system-page-panel-form .form-select {padding: 8px 20px;}
+     .tm-notification-page-main .request-card {display: block !important;}
+     .tm-notification-page-main .time-text {text-align: left !important;margin-top: 10px;margin-left: 0 !important;}
+     .tm-parking-management-system-page-panel {padding: 50px 15px 30px;}
+     .tm-content-area-panel-table-title {display: block !important;}
+     .tm-content-area-panel-table-top-drd {display: block;}
+     .tm-content-area-panel-table-title h4 {margin-bottom: 15px;}
+     .tm-content-area-panel-table-top-drd .form-select {margin: 15px 0;}
+     .tm-btn3 {padding: 8px 20px;font-size: 16px;}
+     .tm-content-area-panel-table-top-drd .tm-btn {margin: 15px 0;}
+     .tm-parking-revenue-panel-table h5 {font-size: 16px;}
+     .tm-assign-parking-panel-form-right {padding: 0; box-shadow: none;}
+     .tm-payment-summary-order-total::after {left: -15px;width: calc(100% + 30px);}
+}
+@media only screen and (max-width: 480px) {
+    body {font-size: 14px;}
+    h1 {font-size: 28px;}
+    h2 {font-size: 24px;}
+    h3 {font-size: 22px;}
+    h4 {font-size: 20px;}
+    h5 {font-size: 18px;}
+    .tm-header-menu img{width: 120px}
+    .tm-sec-title {margin-bottom: 20px;}
+    .tm-btn,.tm-btn2 {padding: 8px 10px;font-size: 15px;}
+    .tm-banner-sec-left-form .form-icon-group select, .tm-banner-sec-left-form .form-icon-group input {font-size: 14px;}
+    .tm-banner-sec-left-form .form-icon-group i {font-size: 14px;}
+    .tm-banner-sec-left-form .search-box {padding: 20px 15px;}
+    .tm-have-questions-sec-form {padding: 20px;}
+    .tm-faq-sec-panel .accordion-button {font-size: 18px;}
+    .tm-footer-logo img {width: 120px;}
+    .tm-faq-sec-panel .accordion-button.collapsed::after {background-size: 70%;background-position: right center;}
+    .tm-have-questions-sec-form-main input {height: 36px;}
+    .tm-footer-soical ul li a {font-size: 20px;}
+    .tm-faq-sec-panel .accordion-flush .accordion-item {padding: 15px 0;}
+    .tm-location-card-page-booking-panel {display: block;}
+    .tm-location-card-page-booking-panel-img img {border-radius: 8px 8px 0 0;}
+    .tm-location-card-page-booking-panel-text-top {min-height: auto;}
+     .tm-location-card-page-booking-panel-text {padding: 10px 10px 0;}
+     .tm-location-card-page-booking-panel-img img {width: 100%; min-height: auto;}
+     .tm-parking-space-features-page-title ul {gap: 10px;}
+     .tm-parking-space-features-page-title ul li {font-size: 16px;}
+     .tm-parking-space-features-page-left-slider .carousel-item img {height: 250px;}
+     .tm-parking-space-features-page-right {padding: 30px 0 0;}
+     .tm-parking-duration-sec-panel-tab .nav-tabs .nav-link {font-size: 16px;width: 120px;padding: 10px 12px;}
+     .tm-parking-duration-sec-panel-tab .accordion-button {font-size: 20px;}
+     .tm-parking-space-features-sec ul li img {width: 18px;}
+     .tm-parking-space-features-sec {padding: 15px 10px;}
+     .tm-parking-space-features-sec ul li {font-size: 13px;}
+     .tm-check-in-time-panel .calendar-box, .tm-check-in-time-panel .time-slot-box {padding: 20px 10px;}
+     .tm-check-in-time-panel .calendar-header span {font-size: 20px;}
+     .tm-check-in-time-panel .calendar-dates div span {height: 26px;width: 26px;line-height: 26px; font-size: 14px;}
+     .tm-check-in-time-panel .calendar-days div {font-size: 12px; margin: 10px 0;}
+     .tm-check-in-time-panel .time-slot-grid button {font-size: 14px;padding: 8px 15px;line-height: 1;}
+     .tm-check-in-time-panel .calendar-header i {font-size: 20px;}
+     .tm-booking-details-sec-list ul li {display: block;}
+     .tm-booking-details-sec-list ul li .form-check {padding: 0 0 0 20px !important;}
+     .tm-payment-summary-order-total-text span {font-size: 24px;}
+     .tm-daily-booking-price-page-left .tm-parking-space-features-page-left-slider .carousel-item img {height: 200px;}
+     .tm-log-in-page-form .form-control {height: 38px;}
+     .tm-parking-revenue-panel .input-group {width: auto;}
+     .tm-content-area-top-panel-btn {padding: 10px 10px 0;}
+     .tm-content-area-top-panel h4 {padding: 0 10px;}
+     .tm-content-area-top-panel ul li {padding: 5px 10px;}
+     .tm-parking-revenue-panel-table nav .pagination .page-item a {width: 30px;height: 30px;line-height: 30px;}
+     .tm-parking-revenue-panel-table nav .pagination li {margin: 0 5px;}
+     .tm-content-area-top-panel td {padding: 10px 15px;}
+     .tm-all-parking-list-table td, .tm-all-parking-list-table th {font-size: 12px;}
+     .tm-assign-parking-panel-form-box {padding: 30px 15px;}
+     .tm-assign-parking-panel-form-panel {padding: 30px 15px;}
+     .tm-parking-management-system-page-panel-form .form-label {font-size: 16px;}
+     .tm-parking-management-system-page-panel-form .form-select {padding: 10px 15px;}
+     .tm-dashboard-slot-setting-panel-left-text {margin-bottom: 20px;}
+     .tm-dashboard-slot-setting-panel-left-text h4 {margin-bottom: 0;}
+}

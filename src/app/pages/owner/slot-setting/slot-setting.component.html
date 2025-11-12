@@ -1,0 +1,59 @@
+<div class="tm-dashboard-slot-setting-panel" *ngIf="slot_data">
+  <div class="row">
+    <div class="col-md-6">
+      <div
+        class="tm-dashboard-slot-setting-panel-left tm-dashboard-slot-setting-panel-box"
+      >
+        <div class="tm-dashboard-slot-setting-panel-left-text">
+          <h4>
+            Number of Parking + EV Slots: {{ slot_data?.parkingslots?.length || 0 }}
+          </h4>
+          <h4>
+            Number of Only Parking Slots:
+            {{ slot_data?.without_ev_slots?.length || 0 }}
+          </h4>
+        </div>
+        <button class="tm-btn" (click)="openAddSlot()" [disabled]="!ParkingSpaceID">Add Slots <i class="fas fa-plus"></i
+        ></button>
+      </div>
+    </div>
+    <div class="col-md-6" *ngIf="slot_data.parkingslots">
+      <div
+        class="tm-dashboard-slot-setting-panel-right tm-dashboard-slot-setting-panel-box"
+      >
+        <div class="tm-assign-parking-panel-form-right-panel">
+          <div class="tm-assign-parking-panel-form-right-panel-title">
+            <h4>Parking + EV Slot</h4>
+          </div>
+          <div class="tm-assign-parking-panel-form-right-panel-list">
+            <ul>
+              @for(item of slot_data.parkingslots; track item.slot_code){
+              <li [class.active]="item.status == 'A'">
+                <a href="javascript:void(0)">{{ item?.slot_code }}</a>
+                <span *ngIf="item.status == 'I'">Cancel</span>
+              </li>
+
+              }
+            </ul>
+          </div>
+        </div>
+        <div class="tm-assign-parking-panel-form-right-panel">
+          <div class="tm-assign-parking-panel-form-right-panel-title">
+            <h4>Only Parking Slot</h4>
+          </div>
+          <div class="tm-assign-parking-panel-form-right-panel-list">
+            <ul>
+              @for(item of slot_data.without_ev_slots; track item.slot_code){
+              <li [class.active]="item.status == 'A'">
+                <a href="javascript:void(0)">{{ item?.slot_code }}</a>
+                <span *ngIf="item.status == 'I'">Cancel</span>
+              </li>
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

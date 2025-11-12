@@ -1,0 +1,71 @@
+<section class="tm-log-in-page">
+  <div class="container-fluid p-0">
+    <div class="row align-items-center m-0">
+      <div class="col-md-6 p-0">
+        <div class="tm-log-in-page-img">
+          <img src="assets/img/log-in-img.jpg" alt="" class="img-fluid">
+        </div>
+      </div>
+      <div class="col-md-6 p-0">
+        <div class="tm-log-in-page-text">
+          <div class="tm-log-in-page-text-main">
+            <div class="tm-log-in-page-text-title">
+              <h3>Welcome Back!</h3>
+              <p>Don't have an account? <a [routerLink]="'/signup'">Sign up</a></p>
+            </div>
+            <div class="tm-log-in-page-text-list">
+              <ul>
+                <li><a href="javascript:void(0)"><img src="assets/img/social-media-icon2.svg" alt=""
+                      class="img-fluid"></a></li>
+                <li><a href="javascript:void(0)"><img src="assets/img/social-media-icon3.svg" alt=""
+                      class="img-fluid"></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="tm-log-in-page-form">
+            @if(displayLoginBlock)
+            {
+            @if(!error_type){
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <div class="mb-2">
+                <label for="exampleInputEmail1" class="form-label">Enter your email</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                  formControlName="email" [class.is-invalid]="submitting && loginForm.get('email')?.invalid">
+                <div class="invalid-feedback" *ngIf="loginForm.get('email')?.hasError('required')">Email is required.
+                </div>
+                <div class="invalid-feedback" *ngIf="loginForm.get('email')?.hasError('email')">Enter a valid email
+                  address.</div>
+              </div>
+              <div class="mb-2">
+                <div class="tm-password-hide">
+                  <label for="exampleInputPassword1" class="form-label">Enter your password</label>
+                  <span><a href="javascript:void(0)" (click)="changeInputType()"><i class="bi"
+                        [ngClass]="isPasswordHidden() ? 'bi-eye' : 'bi-eye-slash'"></i></a>
+                    {{isPasswordHidden()?'Show':'Hide'}}</span>
+                </div>
+                <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password"
+                  [class.is-invalid]="submitting && loginForm.get('password')?.invalid" #pwd>
+                <div class="invalid-feedback" *ngIf="loginForm.get('password')?.hasError('required')">Password is
+                  required.</div>
+
+              </div>
+              <button type="submit" class="btn btn-primary tm-btn mt-3">Log In</button>
+              <div class="text-center tm-forget-password">
+                <a href="javascript:void(0)" (click)="showForgetPassword();">Forget password</a>
+              </div>
+            </form>
+            }@else {
+            <app-otp-verfication [otpInfo]="otpInfo" [redirectDashboard]="redirectDashboard"></app-otp-verfication>
+            }
+            }@else {
+            <app-forgot-password (displayLogin)="displayLogin($event);" [redirectDashboard]="redirectDashboard"></app-forgot-password>
+
+            }
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

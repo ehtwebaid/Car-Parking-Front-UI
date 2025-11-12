@@ -1,0 +1,51 @@
+<!-- Sidebar -->
+<div class="offcanvas offcanvas-start tm-sidebar" tabindex="-1" id="sidebarMenu">
+  <div class="offcanvas-header">
+    <a href="javascript:void(0)" class="tm-dashboard-logo"><img src="assets/img/logo.svg" alt="" class="img-fluid"></a>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul>
+      <li [routerLinkActive]="['active']"  [routerLink]="'/parking-owner/dashboard'"><a><img
+            src="assets/img/dashboard-menu-icon1.svg"> Dashboard</a></li>
+
+      <li [routerLinkActive]="['active']" [routerLink]="'/parking-owner/payment'"><a ><img
+            src="assets/img/dashboard-menu-icon2.svg"> My Payments</a></li>
+
+      <li [routerLinkActive]="['active']"  [routerLink]="'/parking-owner/booking'"><a><img
+            src="assets/img/dashboard-menu-icon3.svg"> View Bookings</a></li>
+
+      <li [routerLinkActive]="['active']" [routerLink]="'/parking-owner/setting'"><a ><img
+            src="assets/img/dashboard-menu-icon4.svg"> Settings</a></li>
+
+      <li [routerLinkActive]="['active']" [routerLink]="'/parking-owner/notification'"><a ><img
+            src="assets/img/dashboard-menu-icon5.svg"> Notification</a></li>
+    </ul>
+    <div class="tm-logout-btn"> <a href="javascript:void(0)" (click)="openLogoutAlert();"><img src="assets/img/log-out-btn.svg" alt="" class="img-fluid">Log Out</a>
+    </div>
+  </div>
+</div>
+<!-- Sidebar for Desktop -->
+<div class="tm-sidebar d-none d-lg-block">
+  <a [routerLink]="'/'" class="tm-dashboard-logo"><img src="assets/img/logo.svg" alt="" class="img-fluid"></a>
+  <ul>
+    <li [routerLinkActive]="['active']"><a [routerLink]="'/parking-owner/dashboard'"><img
+          src="assets/img/dashboard-menu-icon1.svg"> Dashboard</a></li>
+
+    <li [routerLinkActive]="['active']"><a [routerLink]="'/parking-owner/payment'"><img
+          src="assets/img/dashboard-menu-icon2.svg"> My Payments</a></li>
+
+    <li [routerLinkActive]="['active']"><a [routerLink]="'/parking-owner/booking'"><img
+          src="assets/img/dashboard-menu-icon3.svg"> View Bookings</a></li>
+
+    <li [routerLinkActive]="['active']"><a [routerLink]="'/parking-owner/setting'"><img
+          src="assets/img/dashboard-menu-icon4.svg"> Settings</a></li>
+
+    <li [routerLinkActive]="['active']"><a [routerLink]="'/parking-owner/notification'"><img
+          src="assets/img/dashboard-menu-icon5.svg"> Notification</a></li>
+  </ul>
+  <div class="tm-logout-btn"> <a href="javascript:void(0)" (click)="openLogoutAlert();"><img
+        src="assets/img/log-out-btn.svg" alt="" class="img-fluid">Log Out</a>
+  </div>
+</div>
+

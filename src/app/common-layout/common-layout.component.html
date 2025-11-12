@@ -1,0 +1,9 @@
+
+@if (is_browser) {
+<div appStickyLayout [headerSelector]="'.page-header'" [sidebarSelector]="'#sidebar'" [footerSelector]="'#footer'">
+<app-header></app-header>
+<router-outlet></router-outlet>
+<app-footer></app-footer>
+</div>
+}
+

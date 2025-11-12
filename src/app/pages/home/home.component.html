@@ -1,0 +1,419 @@
+<section class="tm-banner-sec">
+  <video class="tm-banner-video" autoplay muted loop playsinline preload="auto" id="myVideo">
+    <source src="assets/img/banner-video.mp4" type="video/mp4">
+  </video>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <div class="tm-banner-sec-left">
+          <div class="tm-banner-sec-left-text">
+            <h1>Find, Book & <span>Manage Parking in Seconds</span></h1>
+            <p>A complete system for drivers, space owners, and city partners.</p>
+          </div>
+          <div class="tm-banner-sec-left-form" >
+            <div class="search-box">
+              <!-- State Dropdown -->
+              <div class="mb-3 form-icon-group">
+               <i class="fas fa-map-marker-alt"></i>
+
+                <ng-select [items]="states$ | async" bindLabel="name" bindValue="code"
+                  [placeholder]="'Select State'" [searchable]="true" [addTag]="false" class="" (change)="selectState($event)"></ng-select>
+              </div>
+
+              <!-- Search Input -->
+              <div class="mb-3 form-icon-group">
+                <i class="fas fa-search"></i>
+                <input type="text" class="form-control" id="locationInput" #addressInput placeholder="Search by zip / area / city">
+              </div>
+
+              <!-- Buttons -->
+              <div class="d-grid gap-2 mb-2">
+                <button class="tm-btn" (click)="findParking()">Find Your Parking Space</button>
+                <button class="tm-btn2" (click)="findEV()">Find The EV Charging Spot</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="tm-how-parking-works-sec tm-custom-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="tm-sec-title text-center">
+          <h2>How Parking Works</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="tm-how-parking-works-sec-panel">
+          <div class="tm-how-parking-works-sec-panel-img">
+            <img src="assets/img/how-parking-works-img1.png" alt="" class="img-fluid">
+          </div>
+          <div class="tm-how-parking-works-sec-panel-text text-center">
+            <h3>Search</h3>
+            <p>Find a spot by location, date, and time — see real-time availability.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="tm-how-parking-works-sec-panel">
+          <div class="tm-how-parking-works-sec-panel-img">
+            <img src="assets/img/how-parking-works-img2.png" alt="" class="img-fluid">
+          </div>
+          <div class="tm-how-parking-works-sec-panel-text text-center">
+            <h3>Book</h3>
+            <p>Reserve your space in advance and pay securely online.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="tm-how-parking-works-sec-panel">
+          <div class="tm-how-parking-works-sec-panel-img">
+            <img src="assets/img/how-parking-works-img3.png" alt="" class="img-fluid">
+          </div>
+          <div class="tm-how-parking-works-sec-panel-text text-center">
+            <h3>Park</h3>
+            <p>Drive in, follow the directions, and park with confidence.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="tm-how-parking-works-sec-btn text-center">
+          <a href="javascript:void(0)" class="tm-btn2">Learn More About Parking</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="tm-why-chose-us-sec tm-custom-padding"
+  style="background-image: url('assets/img/why-chose-us-secBg.jpg');">
+  <span class="tm-why-chose-us-sec-overlay"></span>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <div class="tm-why-chose-us-sec-text">
+          <h2><span>Why Chose Us</span></h2>
+          <p>We simplify parking for everyone. Whether you're a driver looking for a reliable spot or a space owner
+            ready to earn, our platform offers secure payments, smart search, and effortless management — all in one
+            place. Fast, flexible, and built with you in mind.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="tm-why-chose-us-sec-text-main">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="tm-why-chose-us-sec-panel text-center">
+                <div class="tm-why-chose-us-sec-panel-icon">
+                  <img src="assets/img/why-chose-us-sec-icon1.svg" alt="" class="img-fluid">
+                </div>
+                <div class="tm-why-chose-us-sec-panel-text">
+                  <h4><span>Save up to 50% on parking</span></h4>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="tm-why-chose-us-sec-panel text-center">
+                <div class="tm-why-chose-us-sec-panel-icon">
+                  <img src="assets/img/why-chose-us-sec-icon2.svg" alt="" class="img-fluid">
+                </div>
+                <div class="tm-why-chose-us-sec-panel-text">
+                  <h4><span>10,000+ spaces across the U.S.</span></h4>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="tm-why-chose-us-sec-panel text-center">
+                <div class="tm-why-chose-us-sec-panel-icon">
+                  <img src="assets/img/why-chose-us-sec-icon3.svg" alt="" class="img-fluid">
+                </div>
+                <div class="tm-why-chose-us-sec-panel-text">
+                  <h4><span>Secure your payments</span></h4>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="tm-why-chose-us-sec-panel text-center">
+                <div class="tm-why-chose-us-sec-panel-icon">
+                  <img src="assets/img/why-chose-us-sec-icon4.svg" alt="" class="img-fluid">
+                </div>
+                <div class="tm-why-chose-us-sec-panel-text">
+                  <h4><span>Book anytime, cancel anytime</span></h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="tm-find-perfect-spoot-sec tm-custom-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="tm-sec-title text-center">
+          <h2>Find the perfect spoot</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="tm-find-perfect-spoot-sec-panel">
+          <div class="tm-find-perfect-spoot-sec-panel-icon">
+            <img src="assets/img/find-perfect-spoot-sec-icon1.svg" alt="" class="img-fluid">
+          </div>
+          <div class="tm-find-perfect-spoot-sec-panel-text">
+            <h4>EV Charging</h4>
+            <p>Conveniently park and charge your electric vehicle while you're away.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="tm-find-perfect-spoot-sec-panel">
+          <div class="tm-find-perfect-spoot-sec-panel-icon">
+            <img src="assets/img/find-perfect-spoot-sec-icon2.svg" alt="" class="img-fluid">
+          </div>
+          <div class="tm-find-perfect-spoot-sec-panel-text">
+            <h4>Prime Locations</h4>
+            <p>Choose from thousands of spaces near airports, stadiums, downtown areas.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="tm-find-perfect-spoot-sec-panel">
+          <div class="tm-find-perfect-spoot-sec-panel-icon">
+            <img src="assets/img/find-perfect-spoot-sec-icon3.svg" alt="" class="img-fluid">
+          </div>
+          <div class="tm-find-perfect-spoot-sec-panel-text">
+            <h4>Instant Booking</h4>
+            <p>Book online and access your parking instructions instantly. No tickets.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="tm-find-perfect-spoot-sec-panel">
+          <div class="tm-find-perfect-spoot-sec-panel-icon">
+            <img src="assets/img/find-perfect-spoot-sec-icon4.svg" alt="" class="img-fluid">
+          </div>
+          <div class="tm-find-perfect-spoot-sec-panel-text">
+            <h4>Affordable Rates</h4>
+            <p>Save up to 50% compared to drive-up rates, especially in high-demand areas.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="tm-find-perfect-spoot-sec-panel">
+          <div class="tm-find-perfect-spoot-sec-panel-icon">
+            <img src="assets/img/find-perfect-spoot-sec-icon5.svg" alt="" class="img-fluid">
+          </div>
+          <div class="tm-find-perfect-spoot-sec-panel-text">
+            <h4>On-Site Security</h4>
+            <p>Feel confident leaving your vehicle with 24/7 surveillance, gated access.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="tm-find-perfect-spoot-sec-panel">
+          <div class="tm-find-perfect-spoot-sec-panel-icon">
+            <img src="assets/img/find-perfect-spoot-sec-icon6.svg" alt="" class="img-fluid">
+          </div>
+          <div class="tm-find-perfect-spoot-sec-panel-text">
+            <h4>Reserved Spaces</h4>
+            <p>Secure your spot in advance — no circling the block or fighting for open spots.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="tm-find-perfect-spoot-sec-panel">
+          <div class="tm-find-perfect-spoot-sec-panel-icon">
+            <img src="assets/img/find-perfect-spoot-sec-icon7.svg" alt="" class="img-fluid">
+          </div>
+          <div class="tm-find-perfect-spoot-sec-panel-text">
+            <h4>24/7 Access</h4>
+            <p>Need flexibility? Many locations offer 24-hour access so you can park or pick up.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="tm-find-perfect-spoot-sec-panel">
+          <div class="tm-find-perfect-spoot-sec-panel-icon">
+            <img src="assets/img/find-perfect-spoot-sec-icon8.svg" alt="" class="img-fluid">
+          </div>
+          <div class="tm-find-perfect-spoot-sec-panel-text">
+            <h4>Valet or Assisted Parking</h4>
+            <p>Conveniently park and charge your electric vehicle while you're away.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section class="tm-want-share-spot tm-custom-padding"
+  style="background-image: url('assets/img/want-share-spotBg.jpg');">
+  <span class="tm-why-chose-us-sec-overlay"></span>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <div class="tm-want-share-spot-img">
+          <img src="assets/img/want-share-spotBg.jpg" alt="" class="img-fluid">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="tm-want-share-spot-text">
+          <h2><span>Want to share your spot ?</span></h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non libero nisi. Nullam arcu velit,
+            tristique eget tincidunt ut, scelerisque eget diam. Duis leo mauris, dignissim a blandit et, cursus id nunc.
+            Nulla maximus enim quis placerat porttitor. Integer quis gravida tellus, quis sodales mi.</p>
+          <a href="javascript:void(0)" class="tm-btn">Share Your Parking Spot Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="tm-faq-sec tm-custom-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="tm-sec-title text-center">
+          <h2>FAQ</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="tm-faq-sec-panel">
+          <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div ngbAccordion>
+              <div ngbAccordionItem class="accordion-item" [collapsed]="accordianTab!=1">
+                <h3 ngbAccordionHeader class="accordion-header">
+                  <button ngbAccordionButton (click)="setaccordianTab(1)">
+                    How do I book a parking spot?
+                  </button>
+                </h3>
+                <div ngbAccordionCollapse>
+                  <div ngbAccordionBody class="accordion-body">
+                    <ng-template>
+                      Phasellus lacinia posuere aliquet. Vivamus dignissim dapibus felis, eget scelerisque justo maximus
+                      ac. Etiam vehicula tincidunt posuere. Sed magna mi, molestie non turpis quis, condimentum finibus
+                      sapien. Sed non tincidunt leo, nec semper orci. Nam sollicitudin ipsum sit amet quam viverra
+                      pretium
+                    </ng-template>
+                  </div>
+                </div>
+              </div>
+              <div ngbAccordionItem class="accordion-item" [collapsed]="accordianTab!=2">
+                <h3 ngbAccordionHeader>
+                  <button ngbAccordionButton class="accordion-header" (click)="setaccordianTab(2)">
+                    Can I cancel or modify my booking?
+                  </button>
+                </h3>
+                <div ngbAccordionCollapse>
+                  <div ngbAccordionBody class="accordion-body">
+                    <ng-template>
+                      Phasellus lacinia posuere aliquet. Vivamus dignissim dapibus felis, eget scelerisque justo maximus
+                      ac. Etiam vehicula tincidunt posuere. Sed magna mi, molestie non turpis quis, condimentum finibus
+                      sapien. Sed non tincidunt leo, nec semper orci. Nam sollicitudin ipsum sit amet quam viverra
+                      pretium
+                    </ng-template>
+                  </div>
+                </div>
+              </div>
+              <div ngbAccordionItem class="accordion-item" [collapsed]="accordianTab!=3">
+                <h3 ngbAccordionHeader class="accordion-header">
+                  <button ngbAccordionButton (click)="setaccordianTab(3)">
+                    How do I list my parking space?
+                  </button>
+                </h3>
+                <div ngbAccordionCollapse>
+                  <div ngbAccordionBody class="accordion-body">
+                    <ng-template>
+                      Phasellus lacinia posuere aliquet. Vivamus dignissim dapibus felis, eget scelerisque justo maximus
+                      ac. Etiam vehicula tincidunt posuere. Sed magna mi, molestie non turpis quis, condimentum finibus
+                      sapien. Sed non tincidunt leo, nec semper orci. Nam sollicitudin ipsum sit amet quam viverra
+                      pretium
+                    </ng-template>
+                  </div>
+                </div>
+              </div>
+              <div ngbAccordionItem class="accordion-item" [collapsed]="accordianTab!=4">
+                <h3 ngbAccordionHeader class="accordion-header">
+                  <button ngbAccordionButton (click)="setaccordianTab(4)">
+                    How do I list my parking space?
+                  </button>
+                </h3>
+                <div ngbAccordionCollapse>
+                  <div ngbAccordionBody class="accordion-body">
+                    <ng-template>
+                      Phasellus lacinia posuere aliquet. Vivamus dignissim dapibus felis, eget scelerisque justo maximus
+                      ac. Etiam vehicula tincidunt posuere. Sed magna mi, molestie non turpis quis, condimentum finibus
+                      sapien. Sed non tincidunt leo, nec semper orci. Nam sollicitudin ipsum sit amet quam viverra
+                      pretium
+                    </ng-template>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="text-center mt-3">
+          <a href="javascript:void(0)" class="tm-btn2">Read More FAQ</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="tm-have-questions-sec tm-custom-padding" tabindex="0" #contactUS style="background-image: url('assets/img/quick-form-bg.jpg');" id="contactUS">
+  <div class="container" >
+    <div class="row"  >
+      <div class="col-lg-8 offset-lg-4">
+        <div class="tm-have-questions-sec-form">
+          <div class="tm-have-questions-sec-form-title">
+            <h2>Have Questions or Need Help?</h2>
+            <p>Reach out to us anytime — we're here to assist you with bookings, listings, or anything else.</p>
+          </div>
+          <div class="tm-have-questions-sec-form-main">
+            <form class="row" [formGroup]="contactForm" (ngSubmit)="submitContactForm()">
+              <div class="col-md-12 mb-3">
+                <label for="exampleInputEmail1" class="form-label">Enter your name</label>
+                <input type="text" class="form-control" formControlName="name"  [class.is-invalid]="submitting && contactForm.get('name')?.invalid">
+                <div class="invalid-feedback" >Name is required.</div>
+
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email Address</label>
+                <input type="email" class="form-control" formControlName="email" [class.is-invalid]="submitting && contactForm.get('email')?.invalid">
+                <div class="invalid-feedback" *ngIf="contactForm.get('email')?.hasError('required')">Email is required.</div>
+                <div class="invalid-feedback" *ngIf="contactForm.get('email')?.hasError('email')">Enter a valid email address.</div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Phone Number</label>
+                <input type="text" appNumeric class="form-control" id="exampleInputPassword1" formControlName="phone_no" maxlength="10" [class.is-invalid]="submitting && contactForm.get('phone_no')?.invalid">
+                <div class="invalid-feedback" *ngIf="contactForm.get('phone_no')?.hasError('required')">Phone No is required.</div>
+                <div class="invalid-feedback" *ngIf="contactForm.get('phone_no')?.hasError('minlength')"> Please enter a valid {{ contactForm.get('phone_no')?.errors?.['minlength']?.requiredLength }}-digit phone number.</div>
+              </div>
+              <div class="col-md-12 mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Message</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="message" [class.is-invalid]="submitting && contactForm.get('message')?.invalid"></textarea>
+                <div class="invalid-feedback" >Message is required.</div>
+
+              </div>
+              <div class="col-md-12 text-center">
+                <button type="submit" class="tm-btn">Send Enquiry</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

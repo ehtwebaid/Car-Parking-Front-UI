@@ -1,0 +1,39 @@
+<section class="tm-dashboard-main">
+  <!-- Toggle Button for Mobile -->
+  <!-- <button class="btn btn-primary d-md-none my-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+      ☰ Menu
+    </button> -->
+  <div class="d-lg-none tm-mob-logo-panel-main">
+    <div class="tm-mob-logo-panel">
+      <div class="tm-mob-logo">
+        <a [routerLink]="['/']" routerLinkActive="router-link-active" ><img src="assets/img/logo.svg" alt="" /></a>
+      </div>
+      <button
+        class="btn btn-primary"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#sidebarMenu"
+      >
+        <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Sidebar (Offcanvas on Mobile) -->
+  <!-- Main Content -->
+  <div class="tm-offcanvas-on-mobile">
+    <div class="d-flex">
+      <app-owner-sidebar
+        (openLogoutPopup)="confirmLogout($event)"
+      ></app-owner-sidebar>
+      <app-owner-header
+        (openLogoutPopup)="confirmLogout($event)"
+      ></app-owner-header>
+      <!-- Main Content -->
+      <div class="tm-dashboard-content">
+        <router-outlet></router-outlet>
+        <app-owner-footer></app-owner-footer>
+      </div>
+    </div>
+  </div>
+</section>

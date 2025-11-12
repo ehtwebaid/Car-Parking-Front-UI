@@ -1,0 +1,74 @@
+<div class="tm-location-card-page-left" id="sidebar" [formGroup]="searchForm">
+  <div class="tm-location-card-page-left-panel">
+    <div class="tm-location-card-page-left-title">
+      <h4>Filter</h4>
+      <a href="javascript:void(0)" (click)="resetFilter()">Clear All</a>
+    </div>
+    <div class="tm-location-card-page-left-price">
+      <div class="tm-location-card-page-left-title-sm">
+        <h5>Price</h5>
+      </div>
+      <div class="wrapper">
+        <fieldset class="filter-price" >
+          <div class="price-wrap">
+            <div class="price-wrap-1">
+              <label for="one">From: {{ searchForm.value.lower | currency }}</label>
+            </div>
+            <div class="price-wrap-2">
+              <label for="two">To: {{ searchForm.value.upper | currency }}</label>
+            </div>
+          </div>
+          <div class="price-field">
+            <input type="range" [min]="lower" [max]="upper"  id="lower" formControlName="lower" />
+            <input type="range" [min]="lower" [max]="upper"  id="upper" formControlName="upper" />
+          </div>
+        </fieldset>
+      </div>
+    </div>
+    <div class="tm-location-card-page-left-list-panel">
+      <div class="tm-location-card-page-left-title-sm">
+        <h5>EV Charging</h5>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label" for="flexCheckDefault">Electric vehicle charging</label>
+        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" formControlName="is_ev_charing" />
+      </div>
+    </div>
+    <div class="tm-location-card-page-left-list-panel">
+      <div class="tm-location-card-page-left-title-sm">
+        <h5>Parking Type</h5>
+      </div>
+      <div class="form-check" *ngFor="let item of parking_types$ | async">
+        <label class="form-check-label" for="flexCheckDefault{{item?.id}}">{{item?.name}}</label>
+        <input class="form-check-input" type="checkbox" value="{{item.id}}" id="flexCheckDefault{{item?.id}}" (click)="setParkingType($event)"/>
+      </div>
+
+    </div>
+    <div class="tm-location-card-page-left-list-panel">
+      <div class="tm-location-card-page-left-title-sm">
+        <h5>Access Hours</h5>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label" for="flexCheckDefault">24/7 Access</label>
+        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" formControlName="twenty_four_service" />
+      </div>
+      <div class="form-check">
+        <label class="form-check-label" for="flexCheckDefault">Monday - Friday</label>
+        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" formControlName="weekday_slot"/>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label" for="flexCheckDefault">Saturday & Sunday</label>
+        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" formControlName="weekend_slot" />
+      </div>
+    </div>
+    <div class="tm-location-card-page-left-list-panel">
+      <div class="tm-location-card-page-left-title-sm">
+        <h5>On-Site Security</h5>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label" for="flexCheckDefault">CCTV</label>
+        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" formControlName="is_cc_tv" />
+      </div>
+    </div>
+  </div>
+</div>

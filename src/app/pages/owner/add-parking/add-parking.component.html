@@ -1,0 +1,292 @@
+<form class="tm-parking-management-system-page-panel-form" [formGroup]="parkingForm" (ngSubmit)="onSubmit()">
+  <div class="tm-dashboard-settings-text-panel-main" style="padding-top: 3px">
+    <div class="tm-assign-parking-panel-form-box-title">
+      <h4>Basic Info</h4>
+    </div>
+
+    <div class="tm-dashboard-settings-user-profile-panel tm-dashboard-settings-text-panel">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Title</label>
+          <input type="text" class="form-control" placeholder="" formControlName="title"
+            [class.is-invalid]="submitting && parkingForm.get('title')?.invalid" />
+          <div class="invalid-feedback" *ngIf="parkingForm.get('title')?.hasError('required')">
+            Title is required.
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">State</label>
+          <ng-select [items]="states$ | async" bindLabel="name" bindValue="id" formControlName="state_id"
+            [placeholder]="'Select State'" [searchable]="true" [addTag]="false" class="" [class.is-invalid]="
+              submitting && parkingForm.get('state_id')?.invalid
+            ">
+          </ng-select>
+          <div class="invalid-feedback" *ngIf="parkingForm.get('state_id')?.hasError('required')">
+            State is required.
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Address</label>
+          <input type="text" class="form-control" placeholder="" #addressInput placeholder="Enter address"
+            formControlName="address" [class.is-invalid]="
+              submitting && parkingForm.get('address')?.invalid
+            " />
+          <div class="invalid-feedback" *ngIf="parkingForm.get('address')?.hasError('required')">
+            Address is required.
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">City</label>
+          <input type="text" class="form-control" placeholder="" formControlName="city"
+            [class.is-invalid]="submitting && parkingForm.get('city')?.invalid" />
+          <div class="invalid-feedback" *ngIf="parkingForm.get('city')?.hasError('required')">
+            City is required.
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Zip</label>
+          <input type="text" class="form-control" placeholder="" formControlName="zip" appNumeric
+            [class.is-invalid]="submitting && parkingForm.get('zip')?.invalid" />
+          <div class="invalid-feedback" *ngIf="parkingForm.get('zip')?.hasError('required')">
+            Zip is required.
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Parking Type</label>
+          <ng-select [items]="parking_types$ | async" bindLabel="name" bindValue="id" formControlName="parking_type_id"
+            [placeholder]="'Select Parking Type'" [searchable]="true" [addTag]="false" class="" [class.is-invalid]="
+              submitting && parkingForm.get('parking_type_id')?.invalid
+            ">
+          </ng-select>
+          <div class="invalid-feedback" *ngIf="parkingForm.get('parking_type_id')?.hasError('required')">
+            Parking Type is required.
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Per Hour Price</label>
+          <input type="text" class="form-control" placeholder="" formControlName="per_hour_price" appNumeric
+            [class.is-invalid]="
+              submitting && parkingForm.get('per_hour_price')?.invalid
+            " />
+          <div class="invalid-feedback" *ngIf="parkingForm.get('per_hour_price')?.hasError('required')">
+            Per Hour Price is required.
+          </div>
+          <div class="invalid-feedback" *ngIf="parkingForm.get('per_hour_price')?.hasError('min')">
+            Per Hour Price must be at least
+            {{ parkingForm.get('per_hour_price')?.errors?.['min'].min }}.
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Per Month Price</label>
+          <input type="text" class="form-control" placeholder="" formControlName="per_month_price" appNumeric
+            [class.is-invalid]="
+              submitting && parkingForm.get('per_month_price')?.invalid
+            " />
+          <div class="invalid-feedback" *ngIf="parkingForm.get('per_month_price')?.hasError('required')">
+            Per Month Price is required.
+          </div>
+          <div class="invalid-feedback" *ngIf="parkingForm.get('per_month_price')?.hasError('min')">
+            Per Month Price must be at least
+            {{ parkingForm.get('per_month_price')?.errors?.['min'].min }}.
+          </div>
+        </div>
+
+         <div class="col-md-6 mb-3">
+          <label class="form-label">Number of Parking Slots</label>
+          <input type="text" class="form-control" placeholder="" formControlName="total_slot" appNumeric
+            [class.is-invalid]="
+              submitting && parkingForm.get('total_slot')?.invalid
+            " />
+          <div class="invalid-feedback" *ngIf="parkingForm.get('total_slot')?.hasError('required')">
+            Parking Slots is required.
+          </div>
+          <div class="invalid-feedback" *ngIf="parkingForm.get('ev_charing_slot')?.hasError('min')">
+            Parking Slots must be at least
+            {{ parkingForm.get('ev_charing_slot')?.errors?.['min'].min }}
+          </div>
+        </div>
+          <div class="col-md-6 mb-3">
+          <label class="form-label">Minimum Booking Duration</label>
+          <input type="text" class="form-control" placeholder="" formControlName="min_booking_duration" appNumeric
+            [class.is-invalid]="
+              submitting && (parkingForm.get('min_booking_duration')?.invalid || parkingForm.errors?.['notDivisibleBy30'])
+            " />
+
+          <div class="invalid-feedback" *ngIf="parkingForm.get('min_booking_duration')?.hasError('required')">
+            Minimum Booking Duration is required.
+          </div>
+          <div class="invalid-feedback" *ngIf="parkingForm.get('min_booking_duration')?.hasError('min')">
+            Minimum Booking Duration must be at least
+            {{ parkingForm.get('min_booking_duration')?.errors?.['min'].min }}.
+          </div>
+           <div class="invalid-feedback" *ngIf="parkingForm?.errors?.['notDivisibleBy30']">
+           Duration must be a multiple of 30 (e.g. 30, 60, 90, 120).
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label d-block">EV Charge Available</label>
+
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="is_ev_charing" id="radio3" value="1"
+              formControlName="is_ev_charing" />
+            <label class="form-check-label" for="radio3">Yes</label>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="is_ev_charing" id="radio4" value="0"
+              formControlName="is_ev_charing" />
+            <label class="form-check-label" for="radio4">No</label>
+          </div>
+        </div>
+
+
+        @if(parkingForm.get('is_ev_charing')?.value=='1'){
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Number of EV Charging Slots</label>
+          <input type="text" class="form-control" placeholder="" formControlName="ev_charing_slot" [class.is-invalid]="
+              submitting && (parkingForm.get('ev_charing_slot')?.invalid ||
+              parkingForm.errors?.['maxFieldExceeds'])
+            " />
+          <div class="invalid-feedback" *ngIf="parkingForm.get('ev_charing_slot')?.hasError('required')">
+            EV Charge Slot is required.
+          </div>
+          <div class="invalid-feedback" *ngIf="parkingForm.get('ev_charing_slot')?.hasError('min')">
+            EV Charge Slot must be at least
+            {{ parkingForm.get('ev_charing_slot')?.errors?.['min'].min }}.
+          </div>
+          <div class="invalid-feedback" *ngIf="parkingForm.errors?.['maxFieldExceeds']">
+           EV charging slots cannot be more than total slots.
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">EV Chargeing Price</label>
+          <input type="text" class="form-control" placeholder="" formControlName="ev_charging_price" [class.is-invalid]="
+              submitting && parkingForm.get('ev_charging_price')?.invalid
+            " />
+          <div class="invalid-feedback" *ngIf="parkingForm.get('ev_charging_price')?.hasError('required')">
+            EV Chargeing Price is required.
+          </div>
+          <div class="invalid-feedback" *ngIf="parkingForm.get('ev_charging_price')?.hasError('min')">
+            EV Chargeing Price must be at least
+            {{ parkingForm.get('ev_charging_price')?.errors?.['min'].min }}.
+          </div>
+        </div>
+        }
+
+         <div class="col-md-6 mb-3">
+          <label class="form-label d-block">Access Hours</label>
+
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="check1" value="option1"
+              formControlName="twenty_four_service" />
+            <label class="form-check-label" for="check1">24/7</label>
+          </div>
+
+
+        </div>
+          @if(!parkingForm.get('twenty_four_service')?.value) {
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Start Time</label>
+          <ngb-timepicker formControlName="start_time" [class.is-invalid]="
+              submitting && parkingForm.get('start_time')?.invalid
+            " />
+          <div class="invalid-feedback" *ngIf="parkingForm.get('start_time')?.hasError('required')">
+            Start Time is required.
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">End Time</label>
+          <ngb-timepicker formControlName="end_time" [class.is-invalid]="
+              submitting && parkingForm.get('end_time')?.invalid
+            " />
+          <div class="text-danger" *ngIf="parkingForm?.hasError('endBeforeStart')">
+            End Time always greater than Start Time.
+          </div>
+        </div>
+        }
+
+        <div class="col-md-6 mb-3">
+          <label class="form-label d-block">Available Days</label>
+
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="check2" value="option2"
+              formControlName="weekday_slot" />
+            <label class="form-check-label" for="check2">Monday-Friday</label>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="check3" value="option3"
+              formControlName="weekend_slot" />
+            <label class="form-check-label" for="check3">Saturday & Sunday</label>
+          </div>
+          <span class="text-danger" *ngIf="submitting && parkingForm.hasError('slotRequired')">Please select at
+            least
+            one option: Monday–Friday or Saturday &
+            Sunday.
+          </span>
+        </div>
+        <div class="col-md-12 mb-3">
+          <label class="form-label d-block">CCTV Features Available</label>
+
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="is_cc_tv" id="radio1" value="1"
+              formControlName="is_cc_tv" />
+            <label class="form-check-label" for="radio1">Yes</label>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="is_cc_tv" id="radio2" value="0"
+              formControlName="is_cc_tv" />
+            <label class="form-check-label" for="radio2">No</label>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="tm-dashboard-site-photo-panel-main">
+    <div class="tm-assign-parking-panel-form-box-title">
+      <h4>Site Photo</h4>
+    </div>
+    <div class="tm-dashboard-site-photo-panel">
+      <div class="tm-browse-file-box">
+        <label class="form-label"><b>Parking Spot Photo</b></label>
+        <img src="assets/img/browse-file-icon.svg" alt="" class="img-fluid" />
+        <app-file-uploader (onFileUpload)="attachFiles($event)" [MAX_UPLODS]="MAX_UPLODS" #file_uploader>
+        </app-file-uploader>
+        <div class="text-danger" *ngIf="submitting && parkingForm.get('files')?.hasError('required')">
+          Please Upload Atlest One Image.
+        </div>
+      </div>
+      <div class="preview-container mt-3 d-flex flex-wrap gap-2">
+        <div class="preview-thumb position-relative" *ngFor="let photo of photos; let i = index">
+          <img [src]="photo.url" alt="Preview" class="img-thumbnail" style="width: 150px;height: 150px;" />
+
+          <!-- Centered Remove Button -->
+          <button type="button" class="btn btn-danger btn-sm position-absolute top-50 start-50 translate-middle"
+            (click)="removePhoto(i)">
+            <i class="bi bi-trash"></i>
+          </button>
+        </div>
+         <div class="preview-thumb position-relative" *ngFor="let photo of parkingData?.image_previews; let i = index">
+          <img [src]="photo" alt="Preview" class="img-thumbnail" style="width: 150px;height: 150px;" />
+
+          <!-- Centered Remove Button -->
+          <button type="button" class="btn btn-danger btn-sm position-absolute top-50 start-50 translate-middle"
+            (click)="removeExistingPhoto(i)">
+            <i class="bi bi-trash"></i>
+          </button>
+        </div>
+      </div>
+
+
+      <div class="text-center mt-4">
+        <button type="submit" class="btn btn-primary mt-3 tm-btn">
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

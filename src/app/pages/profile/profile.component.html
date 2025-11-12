@@ -1,0 +1,61 @@
+<div class="tm-dashboard-settings-user-profile-panel-main">
+  <div class="tm-assign-parking-panel-form-box-title">
+    <h4>User Profile</h4>
+  </div>
+  <div class="tm-dashboard-settings-user-profile-panel">
+    <div class="profile-pic-wrapper text-center">
+      <img src="{{profile_photo}}" alt="Profile" class="profile-pic" id="profileImage">
+      <label class="upload-icon">
+        <i class="fa-solid fa-camera"></i>
+        <input type="file" accept="image/*" (change)="setFilePath($event)">
+      </label>
+    </div>
+    <form class="tm-parking-management-system-page-panel-form" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Enter Your Name</label>
+          <input type="text" class="form-control" placeholder="" formControlName="name" [class.is-invalid]="
+                    submitting && profileForm.get('name')?.invalid
+                  ">
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Enter Your Email</label>
+          <input type="email" class="form-control" placeholder="" formControlName="email" [class.is-invalid]="
+                    submitting && profileForm.get('email')?.invalid
+                  ">
+          <div class="invalid-feedback" *ngIf="profileForm.get('email')?.hasError('required')">
+            Email is required.
+          </div>
+          <div class="invalid-feedback" *ngIf="profileForm.get('email')?.hasError('email')">
+            Enter a valid email address.
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Enter Your Number</label>
+          <input type="text" class="form-control" placeholder="" formControlName="phone_no" appNumeric maxlength="10"
+            [class.is-invalid]="
+                    submitting && profileForm.get('phone_no')?.invalid
+                  ">
+          <div class="invalid-feedback" *ngIf="profileForm.get('phone_no')?.hasError('required')">
+            Phone is required.
+          </div>
+          <div class="invalid-feedback" *ngIf="profileForm.get('phone_no')?.hasError('minlength')">
+            Phone number must be at least 10 digits.
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Enter Your Address</label>
+          <input type="text" class="form-control" placeholder="" formControlName="address" [class.is-invalid]="
+                    submitting && profileForm.get('address')?.invalid
+                  ">
+          <div class="invalid-feedback" *ngIf="profileForm.get('address')?.hasError('required')">
+            Address is required.
+          </div>
+        </div>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary mt-3 tm-btn">Save</button>
+      </div>
+    </form>
+  </div>
+</div>

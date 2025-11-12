@@ -1,0 +1,132 @@
+<div class="tm-content-area">
+  <div class="tm-booking-calendar-panel tm-check-in-time-panel">
+   <div class="d-flex align-items-center mb-3">
+  <!-- Left Title -->
+  <div class="flex-grow-1">
+    <h4 class="m-0">Booking Calendar</h4>
+  </div>
+
+  <!-- Center Title -->
+  <div class="flex-grow-1 text-center">
+    <h4 class="m-0">{{calHeading}}</h4>
+  </div>
+
+  <!-- Right Buttons -->
+  <div class="flex-grow-1 d-flex justify-content-end gap-2">
+    <button class="btn btn-primary tm-btn" (click)="previousBooking()">
+      <i class="fas fa-chevron-left"></i> Prev
+    </button>
+    <button class="btn btn-primary tm-btn" (click)="nextBooking()">
+      Next <i class="fas fa-chevron-right"></i>
+    </button>
+  </div>
+</div>
+
+
+    <div class="calendar-box">
+      @if(commonService.isBrowser())
+      {
+       <app-booking-calender #calendar (changeCalHeading)="changeCalHeading($event)" (viewBooking)="viewBooking($event)"></app-booking-calender>
+
+      }
+
+    </div>
+  </div>
+  <div class="tm-booking-calendar-panel-btn">
+    <button class="btn btn-primary tm-btn" (click)="openAddSlot()" [disabled]="!ParkingSpaceID">
+      Add Slots <i class="fas fa-plus"></i>
+    </button>
+    <a href="javascript:void(0)" class="tm-btn" (click)="openAddParking();">Add Parking <i class="fas fa-plus"></i></a>
+  </div>
+  <div class="tm-content-area-panel-table">
+    <!-- Table Title & Button -->
+    <div class="d-flex justify-content-between align-items-center tm-content-area-panel-table-title">
+      <h4>All Parking List</h4>
+      <button class="btn btn-primary tm-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Create Parking Entry <i class="fas fa-plus"></i>
+      </button>
+    </div>
+    <app-filter-data (changeFilter)="changeFilter($event)"></app-filter-data>
+
+    <!-- Table -->
+    <div class="table-responsive tm-parking-revenue-panel-table tm-all-parking-list-table">
+      <table class="table align-middle table-striped table-borderless">
+        <thead class="">
+          <tr>
+            <th>ID</th>
+            <th>Vehicle Number</th>
+            <th>In Time</th>
+            <th>Exit Time</th>
+            <th>Vehicle Type</th>
+            <th>Parking Slots</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          @if (bookings.length>0) { @for (item of bookings; track $index) {
+          <tr>
+            <td>#{{item?.code}}</td>
+            <td>{{item?.billing?.vehicle_number}}</td>
+            <td>{{item?.booking_start | date:'dd MMM, hh:mm: a'}}</td>
+            <td>{{item?.booking_end | date:'dd MMM, hh:mm a'}}</td>
+            <td>{{item?.billing?.carType?.name}}</td>
+            <td>{{item?.parking_slot?.slot_code}}</td>
+            <td>
+              <button class="btn">
+                <img src="assets/img/pencil-icon.svg" alt="" class="img-fluid" />
+              </button>
+              <button class="btn" (click)="viewBooking(item?.id)">
+                <img src="assets/img/eye-icon.svg" alt="" class="img-fluid" />
+              </button>
+              <button class="btn tm-btn" ngbTooltip="{{item?.vacant_slots}}" triggers="click:blur">Vacant Slot</button>
+            </td>
+          </tr>
+          }
+          }@else {
+          <tr>
+            <td colspan="7" class="text-center">No booking(s) Found</td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    <!-- Pagination -->
+    <div class="tm-parking-revenue-panel-table-pagination">
+      <nav>
+        @if (bookings.length>0) {
+        <ngb-pagination class="pagination justify-content-center" [collectionSize]="collectionSize" [(page)]="page"
+          [pageSize]="per_page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"
+          (pageChange)="onPageChange($event)" firstText="⏮" previousText="◀" nextText="▶" lastText="⏭" />
+        }
+      </nav>
+    </div>
+  </div>
+</div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Parking Space</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <app-add-parking (onParkingCreate)="closeModal($event)" [parkingData]="parkingData"></app-add-parking>
+  </div>
+</ng-template>
+<ng-template #slot_content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Parking Slot</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <app-create-slot (onSlotCreate)="closelotModal($event)" [id]="parkingData?.id"
+      [is_ev_charing]="parkingData?.is_ev_charing"></app-create-slot>
+  </div>
+</ng-template>
+<ng-template #booking_detail let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Booking</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <app-booking-detail [id]="bookingID"></app-booking-detail>
+  </div>
+</ng-template>
