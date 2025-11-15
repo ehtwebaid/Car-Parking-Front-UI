@@ -43,7 +43,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: dist-browser
-          path: dist/browser/
+          path: dist/car-parking/browser/
 
   deploy:
     name: Deploy to Server
