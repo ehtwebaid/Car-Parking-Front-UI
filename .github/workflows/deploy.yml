@@ -55,7 +55,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: dist-browser
-          path: dist/browser/
+          path: dist/car-parking/browser/
 
       # Setup SSH key from GitHub Secrets
       - name: Setup SSH Key
