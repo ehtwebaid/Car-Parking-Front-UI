@@ -40,7 +40,7 @@ jobs:
 
       # Upload build artifacts for deploy
       - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: dist-browser
           path: dist/browser/
@@ -52,7 +52,7 @@ jobs:
     steps:
       # Download build artifacts from the build job
       - name: Download Build Artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v3
         with:
           name: dist-browser
           path: dist/car-parking/browser/
