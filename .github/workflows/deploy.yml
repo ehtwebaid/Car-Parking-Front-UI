@@ -72,5 +72,6 @@ jobs:
       # Deploy new build files via rsync
       - name: Deploy to Server
         run: |
-          rsync -avz -e "ssh -i key.pem -o StrictHostKeyChecking=no" dist/car-parking/browser/ \
+
+         rsync -avz -e "ssh -i key.pem -o StrictHostKeyChecking=no" \ dist/car-parking/browser/ \
           ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.DEPLOY_PATH }}
