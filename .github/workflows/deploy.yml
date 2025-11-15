@@ -1,5 +1,11 @@
 name: CI/CD Pipeline
 
+# Permissions to avoid GITHUB_TOKEN errors
+permissions:
+  contents: read     # Allows workflow to fetch repo code
+  actions: read      # Allows artifact operations
+  id-token: write    # Optional: needed for some secure deploys
+
 on:
   push:
     branches:
@@ -44,7 +50,7 @@ jobs:
       - name: Build App
         run: npm run build -- --c production
 
-      - name: Upload Artifacts
+      - name: Upload Build Artifacts
         uses: actions/upload-artifact@v3
         with:
           name: dist-browser
